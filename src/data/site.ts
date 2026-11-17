@@ -80,10 +80,10 @@ export const team = [
 ];
 
 export const testimonials = [
-  { quote: 'Working with Creatix Studio has been an incredible experience. They truly listened to our needs and delivered a design that exceeded our expectations. We could not be happier with the final product.', name: 'Alan Baker', company: 'Founder, TechWave', img: '/images/team-3.jpg' },
-  { quote: 'From the first call to launch day, everything was smooth. Our new website loads fast, looks stunning, and our enquiries have doubled in three months.', name: 'Priya Nair', company: 'Marketing Head, UrbanNest', img: '/images/team-2.jpg' },
-  { quote: 'The 3D renders made our product look like a premium global brand. Customers keep asking who designed our packaging — it was Creatix.', name: 'Dev Patel', company: 'CEO, BrewBox', img: '/images/team-5.jpg' },
-  { quote: 'They rebuilt our app UX from scratch. Drop-offs fell by 40% in the first month after launch. Worth every rupee.', name: 'Meera Joshi', company: 'Product Lead, Finlytics', img: '/images/team-6.jpg' },
+  { quote: 'Working with Creatix Studio has been an incredible experience. They truly listened to our needs and delivered a design that exceeded our expectations. We could not be happier with the final product.', name: 'Alan Baker', company: 'Founder, TechWave', img: '/images/review-1.jpg' },
+  { quote: 'From the first call to launch day, everything was smooth. Our new website loads fast, looks stunning, and our enquiries have doubled in three months.', name: 'Priya Nair', company: 'Marketing Head, UrbanNest', img: '/images/review-2.jpg' },
+  { quote: 'The 3D renders made our product look like a premium global brand. Customers keep asking who designed our packaging — it was Creatix.', name: 'Dev Patel', company: 'CEO, BrewBox', img: '/images/review-3.jpg' },
+  { quote: 'They rebuilt our app UX from scratch. Drop-offs fell by 40% in the first month after launch. Worth every rupee.', name: 'Meera Joshi', company: 'Product Lead, Finlytics', img: '/images/review-4.jpg' },
 ];
 
 export const projects = [
