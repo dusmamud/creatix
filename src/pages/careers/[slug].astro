@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { jobs, jobPerks, contact } from '../../data/site';
+
+export function getStaticPaths() {
+  return jobs.map((j) => ({ params: { slug: j.slug }, props: { job: j } }));
+}
+const { job } = Astro.props;
+const others = jobs.filter((j) => j.slug !== job.slug);
+const mailto = `mailto:${contact.email}?subject=${encodeURIComponent(`Application — ${job.title} (Creatix)`)}&body=${encodeURIComponent(`Hi Creatix team,\n\nI would like to apply for the ${job.title} role (${job.type}).\n\nName: \nPortfolio / LinkedIn: \nExperience: \nWhy Creatix: \n\nThank you!`)}`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'JobPosting',
+  title: job.title,
+  description: job.intro,
+  employmentType: 'FULL_TIME',
+  hiringOrganization: { '@type': 'Organization', name: 'Creatix', sameAs: 'https://creatiix.pages.dev/' },
+  jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: 'Mumbai', addressCountry: 'IN' } },
+};
+const lead = `${job.intro}`;
+---
+<Layout title={`${job.title} — Careers at Creatix`} description={`${job.title} at Creatix (${job.type}, ${job.experience}, ${job.salary}). ${job.intro}`} jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-careers.jpg">
+  <PageHero eyebrow={`Careers · ${job.dept}`} title={job.title} lead={`${job.type} · ${job.experience} experience · ${job.salary}`} />
+  <section class="bg-ink px-4 py-14 sm:px-6">
+    <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_320px]">
+      <div class="reveal">
+        <p class="text-lg leading-relaxed text-white/80">{job.intro}</p>
+        <h2 class="mt-10 font-display text-2xl font-extrabold">What you will do</h2>
+        <ul class="mt-4 space-y-3">
+          {job.responsibilities.map((r) => (<li class="flex items-start gap-3 rounded-2xl bg-card p-4 text-sm leading-relaxed"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-lime text-xs font-black text-ink">✓</span>{r}</li>))}
+        </ul>
+        <h2 class="mt-10 font-display text-2xl font-extrabold">What we are looking for</h2>
+        <ul class="mt-4 space-y-3">
+          {job.requirements.map((r) => (<li class="flex items-start gap-3 rounded-2xl bg-card p-4 text-sm leading-relaxed"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-lime text-xs font-black text-ink">✓</span>{r}</li>))}
+        </ul>
+        <h2 class="mt-10 font-display text-2xl font-extrabold">What we offer</h2>
+        <ul class="mt-4 space-y-2 text-sm text-white/70">
+          {jobPerks.map((p) => (<li class="flex gap-2"><span class="text-lime">✓</span>{p}</li>))}
+        </ul>
+      </div>
+      <aside class="reveal h-fit space-y-4 lg:sticky lg:top-28">
+        <div class="rounded-2xl bg-lime p-6 text-ink">
+          <h2 class="font-display text-xl font-black">Apply for this role</h2>
+          <p class="mt-2 text-sm text-ink/75">No backend here — applying opens your mail app with a prefilled application. Attach your portfolio or link it in the message.</p>
+          <a href={mailto} class="mt-5 block rounded-full bg-ink px-6 py-3 text-center text-sm font-bold text-white transition hover:bg-ink-2">Apply via email →</a>
+          <p class="mt-3 text-center text-xs text-ink/60">{contact.email}</p>
+        </div>
+        <div class="rounded-2xl bg-card p-6">
+          <h2 class="font-display text-lg font-extrabold">Other open roles</h2>
+          <ul class="mt-3 space-y-3">
+            {others.map((o) => (<li><a href={`/careers/${o.slug}`} class="text-sm font-semibold text-white/80 transition hover:text-lime">{o.title}</a><p class="text-xs text-white/45">{o.dept} · {o.salary}</p></li>))}
+          </ul>
+          <a href="/careers" class="mt-4 inline-block text-sm font-semibold text-lime underline-offset-4 hover:underline">All roles →</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <ContactCTA />
+</Layout>

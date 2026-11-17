@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ContactCTA from '../../components/ContactCTA.astro';
+import { blogPosts } from '../../data/site';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Blog',
+  name: 'Creatix Blog',
+  url: 'https://creatiix.pages.dev/blog/',
+  blogPost: blogPosts.map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: `https://creatiix.pages.dev/blog/${p.slug}/` })),
+};
+const lead = 'Practical notes from the studio — fast websites, brand identity, UX audits, 3D visuals, motion and honest pricing. No fluff, just what works.';
+const categories = [...new Set(blogPosts.map((p) => p.category))];
+---
+<Layout title="Blog — Creatix" description="The Creatix blog: practical notes on fast websites, brand identity, UX audits, 3D visuals, motion graphics and website pricing." jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-blog.jpg">
+  <PageHero eyebrow="Blog" title="Notes from the studio." lead={lead} />
+  <section class="bg-ink px-4 py-14 sm:px-6">
+    <div class="mx-auto max-w-6xl">
+      <div class="reveal flex flex-wrap gap-2" role="group" aria-label="Filter by category">
+        <span class="rounded-full bg-lime px-4 py-2 text-sm font-bold text-ink">All topics</span>
+        {categories.map((c) => (<span class="rounded-full border border-line px-4 py-2 text-sm font-semibold text-white/75">{c}</span>))}
+      </div>
+      <div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {blogPosts.map((p) => (
+          <a href={`/blog/${p.slug}`} class="reveal group flex flex-col overflow-hidden rounded-2xl bg-card">
+            <img src={p.img} alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full object-cover transition group-hover:scale-105" />
+            <div class="flex flex-1 flex-col p-5">
+              <p class="text-xs font-bold uppercase tracking-wider text-lime">{p.category} · {p.readingTime}</p>
+              <h2 class="mt-2 font-display text-xl font-extrabold leading-tight group-hover:text-lime">{p.title}</h2>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-white/60">{p.excerpt}</p>
+              <p class="mt-4 text-xs font-semibold text-white/50">By {p.author} · {p.authorRole} · {p.date}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <ContactCTA />
+</Layout>

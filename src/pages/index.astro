@@ -6,6 +6,7 @@ import ServicesSection from '../components/ServicesSection.astro';
 import Marquee from '../components/Marquee.astro';
 import Testimonials from '../components/Testimonials.astro';
 import ContactCTA from '../components/ContactCTA.astro';
+import AwardsStrip from '../components/AwardsStrip.astro';
 import { team, projects } from '../data/site';
 
 const jsonLd = {
@@ -147,6 +148,22 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
             </div>
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <AwardsStrip />
+
+  <!-- PROCESS TEASER -->
+  <section class="bg-ink px-4 py-12 sm:px-6" aria-labelledby="process-heading">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-6 rounded-3xl border border-line px-6 py-8 sm:px-10">
+      <div class="reveal">
+        <h2 id="process-heading" class="font-display text-2xl font-extrabold sm:text-3xl">From first call to launch in <span class="hl">5 steps</span></h2>
+        <p class="mt-2 max-w-xl text-sm leading-relaxed text-white/65">Discover, Design, Build, Launch, Grow — week by week, with who you talk to and when you approve. No mystery, no surprise bills.</p>
+      </div>
+      <div class="reveal flex flex-wrap gap-3">
+        <a href="/process" class="rounded-full bg-lime px-6 py-3 text-sm font-bold text-ink transition hover:bg-white">See how we work →</a>
+        <a href="/book" class="rounded-full border border-line px-6 py-3 text-sm font-semibold transition hover:border-lime hover:text-lime">Book a free call</a>
       </div>
     </div>
   </section>

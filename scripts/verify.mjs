@@ -11,7 +11,18 @@ const routes = [
   '/projects/northwind-dashboard/', '/projects/orbit-3d-campaign/',
   '/projects/brewbox-motion/', '/projects/urbannest-ecommerce/',
   '/team/', '/reviews/', '/contact/', '/faq/', '/privacy/', '/terms/',
+  '/blog/', '/blog/why-fast-websites-convert/', '/blog/brand-identity-process/',
+  '/blog/ux-audit-checklist/', '/blog/3d-product-visuals-sell-more/',
+  '/blog/motion-graphics-for-social/', '/blog/how-much-does-a-website-cost-india/',
+  '/process/', '/careers/', '/careers/ui-ux-designer/', '/careers/frontend-developer/',
+  '/careers/3d-artist/', '/careers/motion-designer/',
+  '/clients/', '/pricing/', '/book/', '/book/?plan=web-development', '/search/', '/search/?q=pricing',
 ];
+// Optional split: VERIFY_SLICE=start,end runs only that slice of routes, so a
+// long run can be split across two shorter browser sessions (the VM runs low
+// on memory and the Chromium target occasionally crashes past ~60 combos).
+const slice = process.env.VERIFY_SLICE?.split(',').map(Number);
+const routesToCheck = slice ? routes.slice(slice[0], slice[1]) : routes;
 const viewports = [
   { name: 'mobile', width: 390, height: 844 },
   { name: 'desktop', width: 1440, height: 900 },
@@ -26,7 +37,7 @@ const browser = await chromium.launch({
 let failures = 0;
 const summary = [];
 for (const vp of viewports) {
-  for (const route of routes) {
+  for (const route of routesToCheck) {
     const slug = route === '/' ? 'home' : route.replaceAll('/', '-').replace(/^-|-$/g, '');
     const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height } });
     const errors = [];

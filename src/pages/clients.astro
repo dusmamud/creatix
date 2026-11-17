@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { clients, projects } from '../data/site';
+const industries = [...new Set(clients.map((c) => c.industry))];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: clients.map((c, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Organization', name: c.name } })),
+};
+const lead = 'Startups, cafés, fintechs and global brands — 2,000+ companies over 10 years. Here are some of the teams we have worked with, what we did for them, and what changed after launch. Client names below are the mock demo names used across this site.';
+---
+<Layout title="Our Clients — Creatix" description="Creatix clients: Lumina, Finlytics, Northwind, Orbit, BrewBox, UrbanNest and more — industries served and results per client." jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-clients.jpg">
+  <PageHero eyebrow="Clients" title="Teams that trusted us with their brand." lead={lead} />
+  <section class="bg-ink px-4 py-14 sm:px-6">
+    <div class="mx-auto max-w-6xl">
+      <h2 class="reveal font-display text-2xl font-extrabold">Client wall</h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {clients.map((c) => {
+          const project = projects.find((p) => p.title.startsWith(c.name));
+          return (
+          <article class="reveal rounded-2xl bg-card p-6">
+            <p class="font-display text-3xl font-black tracking-tight">{c.name}</p>
+            <p class="mt-1 text-xs font-bold uppercase tracking-wider text-lime">{c.industry} · {c.service}</p>
+            <p class="mt-3 rounded-xl bg-lime/10 px-4 py-3 text-sm font-semibold text-lime">{c.result}</p>
+            {project && <a href={`/projects/${project.slug}`} class="mt-4 inline-block text-sm font-semibold text-white underline-offset-4 hover:text-lime hover:underline">Read the case study →</a>}
+          </article>
+          );
+        })}
+      </div>
+      <h2 class="reveal mt-14 font-display text-2xl font-extrabold">Industries we serve</h2>
+      <div class="mt-6 flex flex-wrap gap-2">
+        {industries.map((ind) => (<span class="reveal rounded-full border border-line px-4 py-2 text-sm font-semibold text-white/80">{ind}</span>))}
+      </div>
+      <p class="reveal mt-4 max-w-2xl text-sm leading-relaxed text-white/60">Every industry above has a real project behind it on the <a href="/projects" class="font-semibold text-lime underline-offset-4 hover:underline">projects page</a> — with the challenge, the solution and the measured result.</p>
+      <div class="reveal mt-10 rounded-2xl bg-lime p-6 text-ink sm:p-8">
+        <h2 class="font-display text-2xl font-extrabold">Want your name on this wall?</h2>
+        <p class="mt-2 max-w-xl text-sm text-ink/75">Tell us what you are building. We reply within one working day with honest next steps and a fixed quote.</p>
+        <a href="/book" class="mt-4 inline-block rounded-full bg-ink px-6 py-3 text-sm font-bold text-white transition hover:bg-ink-2">Book a free call →</a>
+      </div>
+    </div>
+  </section>
+  <ContactCTA />
+</Layout>

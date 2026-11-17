@@ -19,6 +19,12 @@ cards = [
     ("og-about.jpg", "#0b0b0b", "About Creatix", "A Compact Team, Big Ideas"),
     ("og-team.jpg", "#a3e635", "Meet the Team", "Designers - Developers - Artists"),
     ("og-contact.jpg", "#0b0b0b", "Get in Touch Today", "Start Your Project"),
+    ("og-blog.jpg", "#0b0b0b", "Notes from the Studio", "Design - Web - Brand - Motion"),
+    ("og-process.jpg", "#a3e635", "How We Work", "Discover - Design - Build - Launch"),
+    ("og-pricing.jpg", "#a3e635", "Fixed Prices", "No Surprises, Ever"),
+    ("og-book.jpg", "#0b0b0b", "Book a Free Call", "30 Minutes, Zero Pressure"),
+    ("og-clients.jpg", "#0b0b0b", "Our Clients", "Work That Moved Numbers"),
+    ("og-careers.jpg", "#a3e635", "Come Make Work", "You Can Sign"),
 ]
 for name, bg, l1, l2 in cards:
     dark = bg == "#0b0b0b"

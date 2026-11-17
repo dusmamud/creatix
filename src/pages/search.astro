@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { services, projects, blogPosts } from '../data/site';
+const pages = [
+  { title: 'Home', href: '/', text: 'Creatix creative design agency empowering brands through creative solutions' },
+  { title: 'About Us', href: '/about/', text: 'About Creatix compact team story values 10 years experience' },
+  { title: 'Services', href: '/services/', text: 'UI UX design web development 3D designs motion graphics services pricing' },
+  { title: 'Projects', href: '/projects/', text: 'Selected work case studies brand identity app redesign dashboard 3D campaign motion ecommerce' },
+  { title: 'Our Process', href: '/process/', text: 'How working with Creatix works discover design build launch grow timeline approvals' },
+  { title: 'Pricing', href: '/pricing/', text: 'Pricing fixed prices motion 29999 3D 39999 UI UX 49999 website 59999 packages' },
+  { title: 'Book a Free Consultation', href: '/book/', text: 'Book free 30 minute consultation call discovery day time slot' },
+  { title: 'Clients', href: '/clients/', text: 'Clients Lumina Finlytics Northwind Orbit BrewBox UrbanNest GlowFit results industries' },
+  { title: 'Careers', href: '/careers/', text: 'Careers jobs UI UX designer frontend developer 3D artist motion designer hiring Mumbai' },
+  { title: 'Blog', href: '/blog/', text: 'Blog articles fast websites brand identity UX audit 3D product visuals motion social website cost' },
+  { title: 'Meet the Team', href: '/team/', text: 'Team Aarav Ishita Kabir Sana Rohan Ananya designers developers' },
+  { title: 'Reviews', href: '/reviews/', text: 'Reviews testimonials clients Alan Baker Priya Nair Dev Patel Meera Joshi' },
+  { title: 'FAQ', href: '/faq/', text: 'Frequently asked questions timelines cost ownership support redesign' },
+  { title: 'Contact Us', href: '/contact/', text: 'Contact email phone Mumbai project enquiry' },
+];
+const entries = [
+  ...pages.map((p) => ({ ...p, kind: 'Page' })),
+  ...services.map((s) => ({ title: s.title, href: `/services/${s.slug}/`, text: `${s.title} ${s.short} ${s.price} ${s.points.join(' ')}`, kind: 'Service' })),
+  ...projects.map((p) => ({ title: p.title, href: `/projects/${p.slug}/`, text: `${p.title} ${p.category} ${p.service} ${p.summary} case study`, kind: 'Project' })),
+  ...blogPosts.map((p) => ({ title: p.title, href: `/blog/${p.slug}/`, text: `${p.title} ${p.category} ${p.excerpt} ${p.author}`, kind: 'Article' })),
+];
+const lead = 'Search every page, service, project and article on the Creatix site — right here, in your browser. Nothing leaves your device.';
+---
+<Layout title="Search — Creatix" description="Search the Creatix site: pages, services, projects, case studies and blog articles." lead={lead}>
+  <PageHero eyebrow="Search" title="Find it on Creatix." lead={lead} />
+  <section class="bg-ink px-4 py-14 sm:px-6">
+    <div class="mx-auto max-w-3xl">
+      <form id="search-form" role="search" class="reveal flex overflow-hidden rounded-full border border-line bg-card">
+        <label class="sr-only" for="search-input">Search the site</label>
+        <input id="search-input" type="search" placeholder="Try “pricing”, “3D”, “UX audit”, “careers”…" autocomplete="off" class="w-full bg-transparent px-5 py-3.5 text-sm outline-none placeholder:text-white/40" />
+        <button type="submit" class="shrink-0 bg-lime px-5 text-sm font-semibold text-ink transition hover:bg-white">Search</button>
+      </form>
+      <p id="search-count" class="mt-4 text-sm text-white/55" role="status"></p>
+      <div id="search-results" class="mt-4 space-y-3">
+        {entries.map((e) => (
+          <a href={e.href} data-title={e.title.toLowerCase()} data-text={e.text.toLowerCase()} class="search-item reveal block rounded-2xl bg-card p-5 transition hover:border-lime/50">
+            <span class="rounded-full bg-lime/15 px-3 py-1 text-[11px] font-black uppercase tracking-wider text-lime">{e.kind}</span>
+            <h2 class="mt-2 font-display text-lg font-extrabold">{e.title}</h2>
+            <p class="mt-1 text-sm text-white/60">{e.text.slice(0, 140)}{e.text.length > 140 ? '…' : ''}</p>
+          </a>
+        ))}
+      </div>
+      <p id="search-empty" class="mt-6 hidden rounded-2xl bg-card p-6 text-sm text-white/70">Nothing matched that search. Try “pricing”, “process”, “blog” or “careers” — or <a href="/contact" class="font-semibold text-lime underline-offset-4 hover:underline">ask us directly</a>.</p>
+    </div>
+  </section>
+  <ContactCTA />
+</Layout>
+<script>
+  const input = document.getElementById('search-input');
+  const items = [...document.querySelectorAll('.search-item')];
+  const count = document.getElementById('search-count');
+  const empty = document.getElementById('search-empty');
+  const apply = (q) => {
+    const query = q.trim().toLowerCase();
+    let shown = 0;
+    items.forEach((el) => {
+      const hay = (el.dataset.title || '') + ' ' + (el.dataset.text || '');
+      const match = !query || query.split(/\s+/).every((w) => hay.includes(w));
+      el.classList.toggle('hidden', !match);
+      if (match) shown++;
+    });
+    if (count) count.textContent = query ? `${shown} result${shown === 1 ? '' : 's'} for “${q.trim()}”` : `${items.length} pages, services, projects and articles on this site.`;
+    empty?.classList.toggle('hidden', shown > 0);
+  };
+  const params = new URLSearchParams(window.location.search);
+  const initial = params.get('q') || '';
+  if (input) {
+    input.value = initial;
+    input.addEventListener('input', () => apply(input.value));
+  }
+  document.getElementById('search-form')?.addEventListener('submit', (e) => { e.preventDefault(); if (input) apply(input.value); });
+  apply(initial);
+</script>

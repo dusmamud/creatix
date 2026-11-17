@@ -1,0 +1,31 @@
+---
+import { awards, clients } from '../data/site';
+interface Props { showClients?: boolean }
+const { showClients = true } = Astro.props;
+---
+<section class="bg-ink px-4 py-12 sm:px-6" aria-labelledby="awards-heading">
+  <div class="mx-auto max-w-6xl">
+    <h2 id="awards-heading" class="reveal font-display text-2xl font-extrabold sm:text-3xl">Recognition <span class="hl">so far</span></h2>
+    <p class="reveal mt-2 max-w-2xl text-sm leading-relaxed text-white/60">Shortlists and nominations from design awards — we list them honestly as shortlists and nominations, never as wins we did not earn. The work matters more than the shelf.</p>
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {awards.map((a) => (
+        <div class="reveal rounded-2xl border border-line bg-card p-5">
+          <p class="rounded-full bg-lime px-3 py-1 text-[11px] font-black uppercase tracking-wider text-ink inline-block">{a.status}</p>
+          <h3 class="mt-3 font-display text-lg font-extrabold leading-tight">{a.title}</h3>
+          <p class="mt-1 text-sm text-white/60">{a.org} · {a.year}</p>
+        </div>
+      ))}
+    </div>
+    {showClients && (
+      <div class="mt-10">
+        <p class="reveal text-xs font-bold uppercase tracking-widest text-white/50">Trusted by teams at</p>
+        <div class="mt-4 flex flex-wrap items-center gap-x-8 gap-y-3">
+          {clients.map((c) => (
+            <a href="/clients" class="reveal font-display text-xl font-black tracking-tight text-white/70 transition hover:text-lime">{c.name}</a>
+          ))}
+        </div>
+        <a href="/clients" class="mt-4 inline-block text-sm font-semibold text-lime underline-offset-4 hover:underline">See all clients and results →</a>
+      </div>
+    )}
+  </div>
+</section>

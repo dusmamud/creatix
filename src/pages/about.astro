@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import StatsBar from '../components/StatsBar.astro';
+import AwardsStrip from '../components/AwardsStrip.astro';
 import ContactCTA from '../components/ContactCTA.astro';
 import { team } from '../data/site';
 const lead = 'Creatix is a creative design agency of designers, developers and storytellers. We are a compact team — and that is our strength: every project gets senior people, honest timelines and work we are proud to sign.';
@@ -42,5 +43,6 @@ const lead = 'Creatix is a creative design agency of designers, developers and s
       <a href="/team" class="mt-6 inline-block rounded-full bg-lime px-6 py-3 text-sm font-bold text-ink transition hover:bg-white">Meet the full team →</a>
     </div>
   </section>
+  <AwardsStrip />
   <ContactCTA />
 </Layout>

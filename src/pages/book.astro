@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { services, contact } from '../data/site';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to book a free consultation with Creatix',
+  description: 'Book a free 30-minute consultation with Creatix in three steps — pick a service, a day and a time slot. No payment needed.',
+  step: [
+    { '@type': 'HowToStep', name: 'Pick a service', text: 'Choose the service you need, or Not sure yet.' },
+    { '@type': 'HowToStep', name: 'Pick a day and time', text: 'Choose one of the next 7 days and a time slot between 10:00 AM and 6:30 PM IST.' },
+    { '@type': 'HowToStep', name: 'Leave your name and email', text: 'Enter your details. Your mail app opens with everything prefilled — press send and we confirm within one working day.' },
+  ],
+};
+const lead = 'A relaxed 30-minute chat — not a sales pitch. We talk through your idea, give you an honest plan and a fixed quote. If it is not for you, you walk away with the plan anyway. No payment, no commitment.';
+---
+<Layout title="Book a Free Consultation — Creatix" description="Book a free 30-minute consultation with Creatix: pick a service, a day and a time slot. No payment needed." jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-book.jpg">
+  <PageHero eyebrow="Free 30-minute consultation" title="Book your free call." lead={lead} />
+  <section class="bg-ink px-4 py-14 sm:px-6">
+    <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_1.4fr]">
+      <div class="reveal">
+        <h2 class="font-display text-2xl font-extrabold">What you get</h2>
+        <ul class="mt-4 space-y-3 text-sm leading-relaxed text-white/70">
+          <li class="flex gap-3"><span class="text-lime">✓</span>An honest read on your idea — what will work, what will not, and why.</li>
+          <li class="flex gap-3"><span class="text-lime">✓</span>A fixed quote and timeline in writing, before you commit to anything.</li>
+          <li class="flex gap-3"><span class="text-lime">✓</span>A plan you keep even if you do not hire us.</li>
+        </ul>
+        <p class="mt-6 text-sm text-white/55">Prefer to write first? Email <a href={`mailto:${contact.email}`} class="font-semibold text-white underline decoration-lime underline-offset-4">{contact.email}</a><br />{contact.hours} · {contact.location}</p>
+        <p class="mt-4 text-sm text-white/55">Wondering what happens next? <a href="/process" class="font-semibold text-lime underline-offset-4 hover:underline">See our process →</a></p>
+      </div>
+      <form id="book-form" class="reveal rounded-2xl bg-card p-6 sm:p-8" novalidate>
+        <label for="bk-service" class="text-sm font-semibold">What do you need help with?</label>
+        <select id="bk-service" class="mt-1.5 w-full rounded-xl border border-line bg-ink px-4 py-3 text-sm outline-none focus:border-lime">
+          <option value="Not sure yet">Not sure yet — help me decide</option>
+          {services.map((s) => (<option value={s.title}>{s.title} — {s.price}</option>))}
+        </select>
+        <p class="mt-6 text-sm font-semibold">Pick a day</p>
+        <div id="bk-days" class="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-4" role="group" aria-label="Day"></div>
+        <p class="mt-6 text-sm font-semibold">Pick a time (IST)</p>
+        <div id="bk-slots" class="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4" role="group" aria-label="Time slot"></div>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          <div>
+            <label for="bk-name" class="text-sm font-semibold">Your name *</label>
+            <input id="bk-name" required minlength="2" placeholder="Full name" class="mt-1.5 w-full rounded-xl border border-line bg-ink px-4 py-3 text-sm outline-none placeholder:text-white/35 focus:border-lime" />
+          </div>
+          <div>
+            <label for="bk-email" class="text-sm font-semibold">Email *</label>
+            <input id="bk-email" type="email" required placeholder="you@company.com" class="mt-1.5 w-full rounded-xl border border-line bg-ink px-4 py-3 text-sm outline-none placeholder:text-white/35 focus:border-lime" />
+          </div>
+        </div>
+        <div class="mt-4">
+          <label for="bk-notes" class="text-sm font-semibold">Anything we should know? (optional)</label>
+          <textarea id="bk-notes" rows="3" placeholder="Your idea in a line or two…" class="mt-1.5 w-full rounded-xl border border-line bg-ink px-4 py-3 text-sm outline-none placeholder:text-white/35 focus:border-lime"></textarea>
+        </div>
+        <p id="bk-error" class="mt-3 hidden text-sm font-semibold text-red-400" role="alert"></p>
+        <p id="bk-ok" class="mt-3 hidden text-sm font-semibold text-lime" role="status">Thanks! Your mail app should open with the booking prefilled — just press send.</p>
+        <button type="submit" class="mt-5 w-full rounded-full bg-lime py-3.5 text-sm font-bold text-ink transition hover:bg-white sm:w-auto sm:px-8">Confirm booking →</button>
+        <p class="mt-3 text-xs text-white/45">Demo booking — no backend. Submitting opens your email app (mailto) with the date, time and details prefilled. Nothing is sent until you press send.</p>
+      </form>
+    </div>
+  </section>
+</Layout>
+<script>
+  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const slots = ['10:00 AM', '11:30 AM', '1:00 PM', '2:30 PM', '4:00 PM', '5:30 PM', '6:30 PM'];
+  const daysEl = document.getElementById('bk-days');
+  const slotsEl = document.getElementById('bk-slots');
+  const today = new Date();
+  const days = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(today);
+    d.setDate(today.getDate() + i);
+    days.push({ label: `${dayNames[d.getDay()]} ${d.getDate()} ${monthNames[d.getMonth()]}`, full: `${dayNames[d.getDay()]}, ${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}` });
+  }
+  let day = days[0];
+  let slot = null;
+  const renderDays = () => {
+    if (!daysEl) return;
+    daysEl.innerHTML = '';
+    days.forEach((d) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = d.label;
+      b.setAttribute('aria-pressed', String(day.label === d.label));
+      b.className = 'rounded-xl border px-3 py-3 text-sm font-semibold transition ' + (day.label === d.label ? 'border-lime bg-lime text-ink' : 'border-line bg-ink text-white/80 hover:border-lime');
+      b.addEventListener('click', () => { day = d; renderDays(); });
+      daysEl.appendChild(b);
+    });
+  };
+  const renderSlots = () => {
+    if (!slotsEl) return;
+    slotsEl.innerHTML = '';
+    slots.forEach((s) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = s;
+      b.setAttribute('aria-pressed', String(slot === s));
+      b.className = 'rounded-xl border px-3 py-3 text-sm font-semibold transition ' + (slot === s ? 'border-lime bg-lime text-ink' : 'border-line bg-ink text-white/80 hover:border-lime');
+      b.addEventListener('click', () => { slot = s; renderSlots(); });
+      slotsEl.appendChild(b);
+    });
+  };
+  renderDays();
+  renderSlots();
+  // Pre-select service from ?plan= (e.g. /book?plan=web-development)
+  const plan = new URLSearchParams(window.location.search).get('plan');
+  if (plan) {
+    const sel = document.getElementById('bk-service');
+    if (sel) {
+      const opt = [...sel.options].find((o) => o.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').includes(plan) || o.value.toLowerCase().includes(plan.replace(/-/g, ' ')));
+      if (opt) sel.value = opt.value;
+    }
+  }
+  const form = document.getElementById('book-form');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const err = document.getElementById('bk-error');
+    const ok = document.getElementById('bk-ok');
+    err?.classList.add('hidden');
+    ok?.classList.add('hidden');
+    const name = document.getElementById('bk-name').value.trim();
+    const email = document.getElementById('bk-email').value.trim();
+    const service = document.getElementById('bk-service').value;
+    const notes = document.getElementById('bk-notes').value.trim();
+    const fail = (m) => { if (err) { err.textContent = m; err.classList.remove('hidden'); } };
+    if (!slot) return fail('Please pick a time slot.');
+    if (name.length < 2) return fail('Please enter your name.');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail('Please enter a valid email address.');
+    const body = `Hi Creatix team,\n\nI would like to book a free 30-minute consultation.\n\nName: ${name}\nEmail: ${email}\nService: ${service}\nDay: ${day.full}\nTime: ${slot} IST\n\n${notes ? 'Notes: ' + notes + '\n' : ''}\nPlease confirm. Thank you!`;
+    window.location.href = `mailto:hello@creatix.in?subject=${encodeURIComponent('Free consultation booking — ' + name + ' — ' + day.label + ' ' + slot)}&body=${encodeURIComponent(body)}`;
+    ok?.classList.remove('hidden');
+    form.reset();
+    slot = null;
+    renderSlots();
+  });
+</script>
