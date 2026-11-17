@@ -6,11 +6,11 @@ import { projects } from '../../data/site';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  itemListElement: projects.map((p, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'CreativeWork', name: p.title, url: `https://creatix.pages.dev/projects/${p.slug}/` } })),
+  itemListElement: projects.map((p, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'CreativeWork', name: p.title, url: `https://creatiix.pages.dev/projects/${p.slug}/` } })),
 };
 const lead = 'Selected work from the Creatix studio — brand identities, apps, dashboards, 3D campaigns and motion films for startups and growing brands.';
 ---
-<Layout title="Projects — Creatix" description="Selected Creatix work: brand identity, app redesign, dashboards, 3D campaigns and motion films." jsonLd={jsonLd} lead={lead} ogImage="https://creatix.pages.dev/images/og-projects.jpg">
+<Layout title="Projects — Creatix" description="Selected Creatix work: brand identity, app redesign, dashboards, 3D campaigns and motion films." jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-projects.jpg">
   <PageHero eyebrow="Our work" title="Turning ideas into masterpieces." lead={lead} />
   <section class="bg-ink px-4 py-14 sm:px-6">
     <div class="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">

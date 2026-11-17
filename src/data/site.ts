@@ -6,7 +6,7 @@
 export const site = {
   name: 'Creatix',
   tagline: 'Empowering Brands Through Creative Solutions',
-  url: 'https://creatix.pages.dev',
+  url: 'https://creatiix.pages.dev',
   description:
     'Creatix is a creative design agency — UI/UX design, web development, 3D design and motion graphics for brands that want to stand out.',
   year: 2026,

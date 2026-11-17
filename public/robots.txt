@@ -25,4 +25,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://creatix.pages.dev/sitemap-index.xml
+Sitemap: https://creatiix.pages.dev/sitemap-index.xml

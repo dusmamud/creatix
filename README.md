@@ -26,12 +26,12 @@ npm run preview
 ## Deploy
 
 Every push to `main` runs `.github/workflows/deploy.yml` (build + `wrangler pages
-deploy dist --project-name=creatix`). It needs these two repository secrets:
+deploy dist --project-name=creatiix`). It needs these two repository secrets:
 
 - `CLOUDFLARE_API_TOKEN` — custom API token with **Account → Cloudflare Pages → Edit**
 - `CLOUDFLARE_ACCOUNT_ID` — your Cloudflare account ID
 
-Live URL (after the first successful deploy): https://creatix.pages.dev
+Live URL (after the first successful deploy): https://creatiix.pages.dev
 
 ## Notes
 

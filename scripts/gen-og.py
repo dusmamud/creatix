@@ -28,6 +28,6 @@ for name, bg, l1, l2 in cards:
     d.text((80, 70), "Creatix", font=font(44), fill="#a3e635" if dark else "#0b0b0b")
     d.text((80, 240), l1, font=font(76), fill="#ffffff" if dark else "#0b0b0b")
     d.text((80, 340), l2, font=font(76), fill="#a3e635" if dark else "#0b0b0b")
-    d.text((80, 520), "creatix.pages.dev", font=font(30, bold=False), fill="#ffffff99" if dark else "#0b0b0b99")
+    d.text((80, 520), "creatiix.pages.dev", font=font(30, bold=False), fill="#ffffff99" if dark else "#0b0b0b99")
     im.save(f"public/images/{name}", quality=88)
     print(name, "ok")

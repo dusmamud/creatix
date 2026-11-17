@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   output: 'static',
-  site: 'https://creatix.pages.dev',
+  site: 'https://creatiix.pages.dev',
   integrations: [sitemap()],
   vite: { plugins: [tailwindcss()] },
 });

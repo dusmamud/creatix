@@ -7,11 +7,11 @@ import { services } from '../../data/site';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  itemListElement: services.map((s, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Service', name: s.title, url: `https://creatix.pages.dev/services/${s.slug}/`, description: s.short } })),
+  itemListElement: services.map((s, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Service', name: s.title, url: `https://creatiix.pages.dev/services/${s.slug}/`, description: s.short } })),
 };
 const lead = 'Four services, one goal: a brand people remember. UI/UX design, web development, 3D design and motion graphics — each with a fixed starting price and a senior team.';
 ---
-<Layout title="Our Services — Creatix" description="UI/UX design, web development, 3D design and motion graphics — fixed prices, senior team, work we are proud to sign." jsonLd={jsonLd} lead={lead} ogImage="https://creatix.pages.dev/images/og-services.jpg">
+<Layout title="Our Services — Creatix" description="UI/UX design, web development, 3D design and motion graphics — fixed prices, senior team, work we are proud to sign." jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-services.jpg">
   <PageHero eyebrow="What we do" title="Services that make brands stand out." lead={lead} />
   <ServicesSection />
   <section class="bg-ink px-4 pb-14 sm:px-6">
