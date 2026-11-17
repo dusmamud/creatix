@@ -15,7 +15,10 @@ import { contact } from '../data/site';
       <p class="mt-4 text-sm text-white/50">Or write directly: <a class="font-semibold text-white underline decoration-lime underline-offset-4" href={`mailto:${contact.email}`}>{contact.email}</a> · {contact.phoneDisplay}</p>
     </div>
     <div class="flex justify-center">
-      <img src="/images/contact-woman.png" alt="A smiling Creatix team member holding a laptop" width="520" height="620" loading="lazy" class="max-h-[420px] w-auto object-contain drop-shadow-[0_24px_32px_rgba(0,0,0,0.5)]" />
+      <picture>
+        <source srcset="/images/contact-woman.webp" type="image/webp" />
+        <img src="/images/contact-woman.png" alt="A smiling Creatix team member holding a laptop" width="520" height="620" loading="lazy" class="max-h-[420px] w-auto object-contain drop-shadow-[0_24px_32px_rgba(0,0,0,0.5)]" />
+      </picture>
     </div>
   </div>
 </section>

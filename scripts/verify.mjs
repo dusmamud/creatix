@@ -49,8 +49,14 @@ for (const vp of viewports) {
     const res = await page.goto(BASE + route, { waitUntil: 'networkidle', timeout: 30000 });
     await page.waitForTimeout(1200);
     // Scroll like a real user (wheel events, which Lenis handles) so
-    // ScrollTrigger reveals fire and lazy images load.
-    for (let i = 0; i < 14; i++) { await page.mouse.wheel(0, 700); await page.waitForTimeout(250); }
+    // ScrollTrigger reveals fire and lazy images load. Scroll until the
+    // page bottom is reached — a fixed step count misses the lower
+    // sections on tall mobile pages (home is ~16,000px at 390px).
+    for (let i = 0; i < 40; i++) {
+      const atBottom = await page.evaluate(() => window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 50);
+      if (atBottom) break;
+      await page.mouse.wheel(0, 700); await page.waitForTimeout(250);
+    }
     await page.waitForTimeout(1500);
     try {
       await page.waitForFunction(() => [...document.images].every((im) => im.complete), null, { timeout: 10000 });

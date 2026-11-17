@@ -29,10 +29,10 @@ export const socials = [
 ];
 
 export const stats = [
-  { value: 2000, suffix: '+', label: 'Company' },
-  { value: 10, suffix: '+', label: 'Years Exp.' },
-  { value: 800, suffix: '+', label: 'Hours of Digital' },
-  { value: 150, suffix: 'M+', label: 'In Tracked Revenue' },
+  { value: 2000, suffix: '+', label: 'Company', sub: 'clients served' },
+  { value: 10, suffix: '+', label: 'Years Exp.', sub: 'in design & branding' },
+  { value: 800, suffix: '+', label: 'Hours of Digital', sub: 'of design & dev work' },
+  { value: 150, suffix: 'M+', label: 'In Tracked Revenue', sub: 'for our clients' },
 ];
 
 export const services = [
@@ -351,11 +351,11 @@ export const awards = [
 ];
 
 export const processSteps = [
-  { num: '01', title: 'Discover', weeks: 'Week 1', who: 'You talk to Aarav (founder) and Ananya (strategy)', detail: 'A free 30-minute call, then a short questionnaire. We learn your goals, audience, competitors and budget. You approve the scope and fixed quote before anything is designed — no surprises later.', approval: 'You approve the scope, timeline and fixed quote.' },
-  { num: '02', title: 'Design', weeks: 'Weeks 2–3', who: 'You talk to Kabir (design) or Sana (web)', detail: 'We show you directions first, then real screens — not a big reveal at the end. You see progress every week and give feedback on actual work, in plain language, with two revision rounds included.', approval: 'You approve the design direction, then the final screens.' },
-  { num: '03', title: 'Build', weeks: 'Weeks 3–5', who: 'You talk to Sana (web) or Rohan (3D / motion)', detail: 'Design becomes a working website, app or film. We test on real phones, check speed and accessibility, and share a staging link so you can click through everything before launch.', approval: 'You approve the staging link — every page, every button.' },
-  { num: '04', title: 'Launch', weeks: 'Week 5–6', who: 'You talk to Ishita (operations)', detail: 'We go live, check every link and form, set up analytics and hand over all files and logins. Launch day is planned, not improvised — and we stay on call while it happens.', approval: 'You sign off the launch checklist with us.' },
-  { num: '05', title: 'Grow', weeks: 'After launch', who: 'You talk to your project lead', detail: '30 days of free fixes, then optional monthly support: updates, new pages, campaigns and improvements based on real visitor data. Most of our clients stay with us for years.', approval: 'You choose whether to continue on a support plan.' },
+  { num: '01', title: 'Discover', weeks: 'Week 1', short: 'Goals, audience, budget — fixed quote in writing.', who: 'You talk to Aarav (founder) and Ananya (strategy)', detail: 'A free 30-minute call, then a short questionnaire. We learn your goals, audience, competitors and budget. You approve the scope and fixed quote before anything is designed — no surprises later.', approval: 'You approve the scope, timeline and fixed quote.' },
+  { num: '02', title: 'Design', weeks: 'Weeks 2–3', short: 'Directions first, then real screens — two revision rounds.', who: 'You talk to Kabir (design) or Sana (web)', detail: 'We show you directions first, then real screens — not a big reveal at the end. You see progress every week and give feedback on actual work, in plain language, with two revision rounds included.', approval: 'You approve the design direction, then the final screens.' },
+  { num: '03', title: 'Build', weeks: 'Weeks 3–5', short: 'Working site or film on a staging link you can click through.', who: 'You talk to Sana (web) or Rohan (3D / motion)', detail: 'Design becomes a working website, app or film. We test on real phones, check speed and accessibility, and share a staging link so you can click through everything before launch.', approval: 'You approve the staging link — every page, every button.' },
+  { num: '04', title: 'Launch', weeks: 'Week 5–6', short: 'Go live with every link checked and all files handed over.', who: 'You talk to Ishita (operations)', detail: 'We go live, check every link and form, set up analytics and hand over all files and logins. Launch day is planned, not improvised — and we stay on call while it happens.', approval: 'You sign off the launch checklist with us.' },
+  { num: '05', title: 'Grow', weeks: 'After launch', short: '30 days of free fixes, then optional monthly support.', who: 'You talk to your project lead', detail: '30 days of free fixes, then optional monthly support: updates, new pages, campaigns and improvements based on real visitor data. Most of our clients stay with us for years.', approval: 'You choose whether to continue on a support plan.' },
 ];
 
 export const pricingPlans = [

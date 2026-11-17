@@ -47,6 +47,9 @@ body { background: #0b0b0b; color: #fff; font-family: var(--font-sans); -webkit-
 .service-row:hover .service-arrow, .service-row:focus-visible .service-arrow { transform: translateX(4px); color: #0b0b0b; }
 .service-arrow { transition: transform 0.25s ease, color 0.25s ease; }
 
+/* Vertical tab label, like the design's "WHAT WE DO" strip on the services card */
+.vertical-tab { writing-mode: vertical-rl; }
+
 /* Reveal-on-scroll: visible by default. GSAP `from()` (motion.ts) hides
    elements only when JS + ScrollTrigger are actually running, so content
    can never get stuck invisible if animation setup fails. */

@@ -1,0 +1,24 @@
+---
+// Client logos strip — mock client wordmarks only (text/SVG type treatments,
+// no fake logos of real brands). Sits right under the stats bar.
+const logos = [
+  { name: 'Lumina', cls: 'font-light italic tracking-tight' },
+  { name: 'FINLYTICS', cls: 'font-black tracking-widest' },
+  { name: 'Northwind', cls: 'font-extrabold tracking-tight' },
+  { name: 'BrewBox', cls: 'font-black lowercase tracking-tight' },
+  { name: 'UrbanNest', cls: 'font-bold tracking-wide' },
+  { name: 'GlowFit', cls: 'font-black italic tracking-tight' },
+  { name: 'TECHWAVE', cls: 'font-extrabold tracking-[0.2em]' },
+  { name: 'SpiceRoute', cls: 'font-bold italic' },
+];
+---
+<section class="bg-ink px-4 pb-2 pt-8 sm:px-6" aria-label="Our clients">
+  <div class="mx-auto max-w-6xl">
+    <p class="reveal text-center text-[11px] font-bold uppercase tracking-[0.25em] text-white/45">Trusted by teams at</p>
+    <div class="reveal mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+      {logos.map((l) => (
+        <a href="/clients" class={`font-display text-xl text-white/60 transition hover:text-lime ${l.cls}`}>{l.name}</a>
+      ))}
+    </div>
+  </div>
+</section>
