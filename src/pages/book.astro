@@ -39,100 +39,26 @@ const lead = 'A relaxed 30-minute chat — not a sales pitch. We talk through yo
         <div id="bk-days" class="mt-2 grid grid-cols-3 gap-2 sm:grid-cols-4" role="group" aria-label="Day"></div>
         <p class="mt-6 text-sm font-semibold">Pick a time (IST)</p>
         <div id="bk-slots" class="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4" role="group" aria-label="Time slot"></div>
+        <p id="bk-slot-error" class="field-error invisible text-red-400" role="alert">Please pick a time slot.</p>
         <div class="mt-6 grid gap-4 sm:grid-cols-2">
           <div>
             <label for="bk-name" class="text-sm font-semibold">Your name *</label>
-            <input id="bk-name" required minlength="2" placeholder="Full name" class="mt-1.5 w-full rounded-xl border border-line bg-ink px-4 py-3 text-sm outline-none placeholder:text-white/35 focus:border-lime" />
+            <input id="bk-name" required minlength="2" placeholder="Full name" aria-describedby="bk-name-error" class="mt-1.5 w-full rounded-xl border border-line bg-ink px-4 py-3 text-sm outline-none placeholder:text-white/35 focus:border-lime" />
+            <p id="bk-name-error" class="field-error invisible text-red-400" role="alert"></p>
           </div>
           <div>
             <label for="bk-email" class="text-sm font-semibold">Email *</label>
-            <input id="bk-email" type="email" required placeholder="you@company.com" class="mt-1.5 w-full rounded-xl border border-line bg-ink px-4 py-3 text-sm outline-none placeholder:text-white/35 focus:border-lime" />
+            <input id="bk-email" type="email" required placeholder="you@company.com" aria-describedby="bk-email-error" class="mt-1.5 w-full rounded-xl border border-line bg-ink px-4 py-3 text-sm outline-none placeholder:text-white/35 focus:border-lime" />
+            <p id="bk-email-error" class="field-error invisible text-red-400" role="alert"></p>
           </div>
         </div>
         <div class="mt-4">
           <label for="bk-notes" class="text-sm font-semibold">Anything we should know? (optional)</label>
           <textarea id="bk-notes" rows="3" placeholder="Your idea in a line or two…" class="mt-1.5 w-full rounded-xl border border-line bg-ink px-4 py-3 text-sm outline-none placeholder:text-white/35 focus:border-lime"></textarea>
         </div>
-        <p id="bk-error" class="mt-3 hidden text-sm font-semibold text-red-400" role="alert"></p>
-        <p id="bk-ok" class="mt-3 hidden text-sm font-semibold text-lime" role="status">Thanks! Your mail app should open with the booking prefilled — just press send.</p>
-        <button type="submit" class="mt-5 w-full rounded-full bg-lime py-3.5 text-sm font-bold text-ink transition hover:bg-white sm:w-auto sm:px-8">Confirm booking →</button>
+        <button type="submit" data-magnetic class="mt-5 w-full rounded-full bg-lime py-3.5 text-sm font-bold text-ink transition hover:bg-white sm:w-auto sm:px-8">Confirm booking →</button>
         <p class="mt-3 text-xs text-white/45">Demo booking — no backend. Submitting opens your email app (mailto) with the date, time and details prefilled. Nothing is sent until you press send.</p>
       </form>
     </div>
   </section>
 </Layout>
-<script>
-  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  const slots = ['10:00 AM', '11:30 AM', '1:00 PM', '2:30 PM', '4:00 PM', '5:30 PM', '6:30 PM'];
-  const daysEl = document.getElementById('bk-days');
-  const slotsEl = document.getElementById('bk-slots');
-  const today = new Date();
-  const days = [];
-  for (let i = 0; i < 7; i++) {
-    const d = new Date(today);
-    d.setDate(today.getDate() + i);
-    days.push({ label: `${dayNames[d.getDay()]} ${d.getDate()} ${monthNames[d.getMonth()]}`, full: `${dayNames[d.getDay()]}, ${d.getDate()} ${monthNames[d.getMonth()]} ${d.getFullYear()}` });
-  }
-  let day = days[0];
-  let slot = null;
-  const renderDays = () => {
-    if (!daysEl) return;
-    daysEl.innerHTML = '';
-    days.forEach((d) => {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.textContent = d.label;
-      b.setAttribute('aria-pressed', String(day.label === d.label));
-      b.className = 'rounded-xl border px-3 py-3 text-sm font-semibold transition ' + (day.label === d.label ? 'border-lime bg-lime text-ink' : 'border-line bg-ink text-white/80 hover:border-lime');
-      b.addEventListener('click', () => { day = d; renderDays(); });
-      daysEl.appendChild(b);
-    });
-  };
-  const renderSlots = () => {
-    if (!slotsEl) return;
-    slotsEl.innerHTML = '';
-    slots.forEach((s) => {
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.textContent = s;
-      b.setAttribute('aria-pressed', String(slot === s));
-      b.className = 'rounded-xl border px-3 py-3 text-sm font-semibold transition ' + (slot === s ? 'border-lime bg-lime text-ink' : 'border-line bg-ink text-white/80 hover:border-lime');
-      b.addEventListener('click', () => { slot = s; renderSlots(); });
-      slotsEl.appendChild(b);
-    });
-  };
-  renderDays();
-  renderSlots();
-  // Pre-select service from ?plan= (e.g. /book?plan=web-development)
-  const plan = new URLSearchParams(window.location.search).get('plan');
-  if (plan) {
-    const sel = document.getElementById('bk-service');
-    if (sel) {
-      const opt = [...sel.options].find((o) => o.value.toLowerCase().replace(/[^a-z0-9]+/g, '-').includes(plan) || o.value.toLowerCase().includes(plan.replace(/-/g, ' ')));
-      if (opt) sel.value = opt.value;
-    }
-  }
-  const form = document.getElementById('book-form');
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const err = document.getElementById('bk-error');
-    const ok = document.getElementById('bk-ok');
-    err?.classList.add('hidden');
-    ok?.classList.add('hidden');
-    const name = document.getElementById('bk-name').value.trim();
-    const email = document.getElementById('bk-email').value.trim();
-    const service = document.getElementById('bk-service').value;
-    const notes = document.getElementById('bk-notes').value.trim();
-    const fail = (m) => { if (err) { err.textContent = m; err.classList.remove('hidden'); } };
-    if (!slot) return fail('Please pick a time slot.');
-    if (name.length < 2) return fail('Please enter your name.');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return fail('Please enter a valid email address.');
-    const body = `Hi Creatix team,\n\nI would like to book a free 30-minute consultation.\n\nName: ${name}\nEmail: ${email}\nService: ${service}\nDay: ${day.full}\nTime: ${slot} IST\n\n${notes ? 'Notes: ' + notes + '\n' : ''}\nPlease confirm. Thank you!`;
-    window.location.href = `mailto:hello@creatix.in?subject=${encodeURIComponent('Free consultation booking — ' + name + ' — ' + day.label + ' ' + slot)}&body=${encodeURIComponent(body)}`;
-    ok?.classList.remove('hidden');
-    form.reset();
-    slot = null;
-    renderSlots();
-  });
-</script>

@@ -93,6 +93,10 @@ const websiteLd = {
       <slot />
     </main>
     <Footer />
+    <div id="scroll-progress" aria-hidden="true"></div>
+    <div id="cursor-dot" aria-hidden="true"></div>
+    <button id="back-to-top" type="button" aria-label="Back to top"><span aria-hidden="true">↑</span></button>
+    <div id="toast" role="status" aria-live="polite"></div>
     <script>
       import '../scripts/motion.ts';
     </script>

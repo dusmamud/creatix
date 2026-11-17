@@ -17,7 +17,7 @@ const moreLinks = [
 ];
 const current = Astro.url.pathname;
 ---
-<header class="absolute inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-5">
+<header id="site-header" class="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-5">
   <nav class="mx-auto flex max-w-6xl items-center justify-between rounded-full bg-ink px-4 py-2.5 shadow-lg shadow-black/20 sm:px-6" aria-label="Main navigation">
     <a href="/" class="flex items-center gap-2" aria-label="Creatix — home">
       <Starburst size={26} />
@@ -25,7 +25,7 @@ const current = Astro.url.pathname;
     </a>
     <ul class="hidden items-center gap-8 text-sm font-medium text-white/85 md:flex">
       {links.map((l) => (
-        <li><a href={l.href} class:list={['transition hover:text-lime', { 'text-lime': current === l.href || current.startsWith(l.href + '/') }]}>{l.label}</a></li>
+        <li><a href={l.href} data-nav-for={l.href === '/services' ? 'services' : l.href === '/reviews' ? 'reviews' : undefined} class:list={['transition hover:text-lime', { 'text-lime': current === l.href || current.startsWith(l.href + '/') }]}>{l.label}</a></li>
       ))}
       <li class="group relative">
         <button type="button" aria-haspopup="true" aria-expanded="false" class="flex items-center gap-1 transition hover:text-lime">More <span aria-hidden="true">▾</span></button>
@@ -36,7 +36,7 @@ const current = Astro.url.pathname;
         </ul>
       </li>
     </ul>
-    <a href="/contact" class="hidden rounded-full bg-lime px-4 py-2 text-sm font-semibold text-ink transition hover:bg-white md:block">Start a Project</a>
+    <a href="/contact" data-magnetic class="hidden rounded-full bg-lime px-4 py-2 text-sm font-semibold text-ink transition hover:bg-white md:block">Start a Project</a>
     <button id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" class="grid h-10 w-10 place-items-center rounded-full text-white hover:bg-white/10 md:hidden">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
     </button>

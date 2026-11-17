@@ -39,11 +39,12 @@ const cols = [
       <div class="max-w-xs">
         <h3 class="font-display text-sm font-extrabold uppercase tracking-wider">Subscribe to our newsletter</h3>
         <p class="mt-3 text-sm text-ink/75">Design tips and new work, once a month. No spam.</p>
-        <form id="newsletter-form" class="mt-3 flex overflow-hidden rounded-full border border-ink/25 bg-white/40">
+        <form id="newsletter-form" novalidate class="mt-3 flex overflow-hidden rounded-full border border-ink/25 bg-white/40">
           <label class="sr-only" for="newsletter-email">Email address</label>
-          <input id="newsletter-email" type="email" required placeholder="Enter your email" class="w-full bg-transparent px-4 py-2.5 text-sm outline-none placeholder:text-ink/50" />
+          <input id="newsletter-email" type="email" required placeholder="Enter your email" aria-describedby="newsletter-email-error" class="w-full bg-transparent px-4 py-2.5 text-sm outline-none placeholder:text-ink/50" />
           <button type="submit" class="shrink-0 bg-ink px-4 text-sm font-semibold text-white transition hover:bg-ink-2">Join</button>
         </form>
+        <p id="newsletter-email-error" class="field-error invisible text-red-700" role="alert"></p>
         <p id="newsletter-ok" class="mt-2 hidden text-sm font-semibold">Thanks — you are on the list.</p>
       </div>
     </div>
@@ -59,10 +60,3 @@ const cols = [
     </div>
   </div>
 </footer>
-<script>
-  document.getElementById('newsletter-form')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    document.getElementById('newsletter-ok')?.classList.remove('hidden');
-    (e.target as HTMLFormElement).reset();
-  });
-</script>

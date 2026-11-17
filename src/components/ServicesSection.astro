@@ -1,7 +1,7 @@
 ---
 import { services } from '../data/site';
 ---
-<section class="bg-ink px-4 py-14 sm:px-6" aria-labelledby="services-heading">
+<section id="services" data-spy="services" class="bg-ink px-4 py-14 sm:px-6" aria-labelledby="services-heading">
   <div class="reveal relative mx-auto max-w-6xl rounded-3xl bg-card px-5 py-10 sm:px-10">
     <span class="vertical-tab absolute left-0 top-10 hidden rounded-r-lg bg-lime px-1.5 py-3 text-[10px] font-bold uppercase tracking-widest text-ink lg:block">What we do</span>
     <div class="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:pl-8">
@@ -21,7 +21,7 @@ import { services } from '../data/site';
       </div>
       <div class="grid gap-4 sm:grid-cols-[1.2fr_1fr]">
         <div class="relative overflow-hidden rounded-2xl">
-          <img src="/images/designer.jpg" alt="A Creatix designer at work" width="640" height="760" loading="lazy" class="h-full min-h-[280px] w-full object-cover grayscale" />
+          <img src="/images/designer.jpg" alt="A Creatix designer at work" width="640" height="760" loading="lazy" data-parallax-img class="h-full min-h-[280px] w-full scale-[1.08] object-cover grayscale" />
           <span class="absolute bottom-3 left-3 rounded-full bg-ink/80 px-3 py-1 text-xs font-semibold text-white">Inside the studio</span>
         </div>
         <div class="flex flex-col gap-4">

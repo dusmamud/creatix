@@ -43,17 +43,17 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
        row straddles the hero's rounded bottom edge, as in the design. -->
   <section class="relative overflow-hidden rounded-b-[2.5rem] bg-mist px-4 pb-14 pt-28 text-ink sm:px-6 sm:pt-32">
     <div class="mx-auto max-w-6xl text-center">
-      <div data-hero class="flex items-start justify-center gap-3 sm:gap-5">
-        <Starburst size={44} class="spin-slow mt-2 hidden shrink-0 sm:block" />
-        <h1 class="max-w-4xl font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl">Empowering Brands Through <span class="whitespace-nowrap">Creative Solutions</span></h1>
-        <Starburst size={36} class="spin-slow mt-8 hidden shrink-0 sm:block" />
+      <div class="flex items-start justify-center gap-3 sm:gap-5">
+        <span data-hero class="mt-2 hidden shrink-0 sm:block"><Starburst size={44} class="spin-slow" /></span>
+        <h1 data-split class="max-w-4xl font-display text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl">Empowering Brands Through <span class="whitespace-nowrap">Creative Solutions</span></h1>
+        <span data-hero class="mt-8 hidden shrink-0 sm:block"><Starburst size={36} class="spin-slow" /></span>
       </div>
       <div class="relative mx-auto mt-6 grid max-w-5xl items-end gap-6 md:grid-cols-[1fr_auto_1fr]">
         <div data-hero class="order-2 text-center md:order-1 md:pb-16 md:text-left">
           <p class="mx-auto max-w-[280px] text-sm leading-relaxed text-ink/70 md:mx-0 md:max-w-[240px]">From web development to branding, we deliver innovative strategies that elevate your brand and drive growth. Let's create something exceptional together.</p>
           <a href="/services" class="mt-4 inline-block rounded-full border border-ink/30 px-4 py-2 text-xs font-semibold transition hover:border-ink hover:bg-ink hover:text-white">Innovate Your Brand</a>
         </div>
-        <div data-hero class="relative order-1 md:order-2">
+        <div data-hero data-parallax class="relative order-1 md:order-2">
           <div class="absolute left-1/2 top-6 -z-0 h-72 w-72 -translate-x-1/2 rounded-full bg-ink/5 sm:h-96 sm:w-96" aria-hidden="true"></div>
           <picture>
             <source srcset="/images/hero-woman.webp" type="image/webp" />
@@ -72,8 +72,8 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
 
   <!-- CTA row straddling the hero edge, as in the design -->
   <div data-hero class="relative z-20 -mt-7 flex flex-col items-center gap-3 px-4 sm:flex-row sm:justify-center">
-    <a href="/contact" class="w-full max-w-xs rounded-full bg-lime px-6 py-3 text-center text-sm font-bold text-ink shadow-lg shadow-lime/30 transition hover:bg-white sm:w-auto">Start Your Project</a>
-    <a href="/about" class="w-full max-w-xs rounded-full border border-ink/30 bg-mist px-6 py-3 text-center text-sm font-semibold text-ink transition hover:bg-ink hover:text-white sm:w-auto">Let's Collaborate</a>
+    <a href="/contact" data-magnetic class="w-full max-w-xs rounded-full bg-lime px-6 py-3 text-center text-sm font-bold text-ink shadow-lg shadow-lime/30 transition hover:bg-white sm:w-auto">Start Your Project</a>
+    <a href="/about" data-magnetic class="w-full max-w-xs rounded-full border border-ink/30 bg-mist px-6 py-3 text-center text-sm font-semibold text-ink transition hover:bg-ink hover:text-white sm:w-auto">Let's Collaborate</a>
   </div>
 
   <StatsBar />
@@ -81,7 +81,7 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
   <ClientLogos />
 
   <!-- MASTERPIECES -->
-  <section class="bg-ink px-4 py-14 sm:px-6" aria-labelledby="masterpieces-heading">
+  <section id="masterpieces" class="bg-ink px-4 py-14 sm:px-6" aria-labelledby="masterpieces-heading">
     <div class="mx-auto max-w-6xl">
       <div class="reveal grid gap-6 md:grid-cols-2 md:items-end">
         <h2 id="masterpieces-heading" class="font-display text-3xl font-extrabold leading-tight sm:text-4xl">Turning Ideas Into<br />Masterpieces</h2>
@@ -90,11 +90,11 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
       <div class="mt-8 grid gap-4 md:grid-cols-[1.6fr_1fr]">
         <figure class="reveal relative overflow-hidden rounded-2xl">
           <span class="absolute left-3 top-3 z-10" aria-hidden="true"><Starburst size={40} class="spin-slow" /></span>
-          <img src="/images/office-team.jpg" alt="The Creatix team working together in the studio" width="960" height="620" loading="lazy" class="h-full min-h-[260px] w-full object-cover grayscale" />
+          <img src="/images/office-team.jpg" alt="The Creatix team working together in the studio" width="960" height="620" loading="lazy" data-parallax-img class="h-full min-h-[260px] w-full scale-[1.08] object-cover grayscale" />
           <figcaption class="absolute bottom-4 left-4 flex items-center gap-2 rounded-r-lg bg-lime px-4 py-3 font-display text-sm font-extrabold uppercase tracking-wide text-ink">A Creative Design<br />Agency <span class="ml-1 flex gap-0.5" aria-hidden="true"><span class="h-8 w-1 bg-ink/70"></span><span class="h-8 w-1 bg-ink/70"></span><span class="h-8 w-1 bg-ink/70"></span></span></figcaption>
         </figure>
         <figure class="reveal relative overflow-hidden rounded-2xl">
-          <img src="/images/thinking-woman.jpg" alt="A designer thinking through a new idea" width="640" height="760" loading="lazy" class="h-full min-h-[260px] w-full object-cover grayscale" />
+          <img src="/images/thinking-woman.jpg" alt="A designer thinking through a new idea" width="640" height="760" loading="lazy" data-parallax-img class="h-full min-h-[260px] w-full scale-[1.08] object-cover grayscale" />
           <svg class="absolute right-4 top-4 h-12 w-12" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 6a10 10 0 0 0-6 18c1.5 1.2 2 2.6 2 4h8c0-1.4.5-2.8 2-4A10 10 0 0 0 24 6Z" stroke="#f472b6" stroke-width="2"/><path d="M20 36h8M21 41h6" stroke="#f472b6" stroke-width="2" stroke-linecap="round"/></svg>
         </figure>
       </div>
@@ -108,7 +108,7 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
   <ProcessPreview />
 
   <!-- TEAM -->
-  <section class="bg-ink px-4 py-14 sm:px-6" aria-labelledby="team-heading">
+  <section id="team" class="bg-ink px-4 py-14 sm:px-6" aria-labelledby="team-heading">
     <div class="mx-auto max-w-6xl">
       <div class="reveal flex flex-wrap items-center justify-between gap-4">
         <h2 id="team-heading" class="font-display text-3xl font-extrabold sm:text-4xl">Meet <span class="hl">the Team</span></h2>
@@ -119,7 +119,7 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
           <article class="reveal rounded-2xl bg-mist p-5 text-ink transition hover:-translate-y-1">
             <div class="flex items-center gap-3">
               <span class="relative grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-full bg-lime ring-2 ring-lime/50">
-                <img src={m.img} alt={`Portrait of ${m.name}`} width="96" height="96" loading="lazy" class="h-full w-full object-cover" />
+                <img src={m.img} alt={`Portrait of ${m.name}`} width="96" height="96" loading="lazy" class="h-full w-full bg-lime/40 object-cover" />
               </span>
               <div>
                 <h3 class="font-display text-base font-extrabold leading-tight">{m.name}</h3>
@@ -137,7 +137,7 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
   <Testimonials />
 
   <!-- FEATURED WORK -->
-  <section class="bg-ink px-4 py-14 sm:px-6" aria-labelledby="work-heading">
+  <section id="work" class="bg-ink px-4 py-14 sm:px-6" aria-labelledby="work-heading">
     <div class="mx-auto max-w-6xl">
       <div class="reveal flex flex-wrap items-end justify-between gap-4">
         <h2 id="work-heading" class="font-display text-3xl font-extrabold sm:text-4xl">Recent <span class="hl">Work</span></h2>
@@ -145,12 +145,13 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
       </div>
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.slice(0, 3).map((p) => (
-          <a href={`/projects/${p.slug}`} class="reveal group overflow-hidden rounded-2xl bg-card">
-            <img src={p.img} alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full object-cover transition duration-300 group-hover:scale-105" />
+          <a href={`/projects/${p.slug}`} class="reveal project-card group overflow-hidden rounded-2xl bg-card">
+            <img src={p.img} alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full bg-card-2 object-cover transition duration-300 group-hover:scale-105" />
             <div class="p-5">
               <p class="text-xs font-bold uppercase tracking-wider text-lime">{p.category} · {p.year}</p>
               <h3 class="mt-1 font-display text-lg font-extrabold group-hover:text-lime">{p.title}</h3>
               <p class="mt-1 text-sm text-white/60">{p.summary}</p>
+              <span class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-lime">View case study <span class="card-arrow" aria-hidden="true">→</span></span>
             </div>
           </a>
         ))}

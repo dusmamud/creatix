@@ -11,7 +11,7 @@ const lead = 'Six people, four disciplines, one standard: work we are proud to s
     <div class="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {team.map((m) => (
         <article class="reveal rounded-2xl bg-mist p-6 text-ink">
-          <img src={m.img} alt={`Portrait of ${m.name}`} width="200" height="200" loading="lazy" class="h-28 w-28 rounded-full object-cover ring-4 ring-lime" />
+          <img src={m.img} alt={`Portrait of ${m.name}`} width="200" height="200" loading="lazy" class="h-28 w-28 rounded-full bg-lime/40 object-cover ring-4 ring-lime" />
           <h2 class="mt-4 font-display text-xl font-extrabold">{m.name}</h2>
           <p class="text-sm font-bold text-lime-deep">{m.role}</p>
           <p class="mt-2 text-sm leading-relaxed text-ink/70">{m.bio}</p>

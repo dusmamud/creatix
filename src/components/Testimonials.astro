@@ -1,7 +1,7 @@
 ---
 import { testimonials } from '../data/site';
 ---
-<section class="bg-ink px-4 py-14 sm:px-6" aria-labelledby="reviews-heading">
+<section id="reviews" data-spy="reviews" class="bg-ink px-4 py-14 sm:px-6" aria-labelledby="reviews-heading">
   <div class="mx-auto max-w-6xl">
     <div class="reveal flex items-end justify-between gap-4">
       <div>
@@ -13,14 +13,14 @@ import { testimonials } from '../data/site';
         <button id="testi-next" type="button" aria-label="Next review" class="grid h-11 w-11 place-items-center rounded-full border border-line text-white transition hover:border-lime hover:text-lime">→</button>
       </div>
     </div>
-    <div class="reveal mt-8 overflow-hidden rounded-3xl">
+    <div id="testi-viewport" class="reveal mt-8 overflow-hidden rounded-3xl" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Client reviews — use left and right arrow keys to change review">
       <div id="testi-track" class="testi-track flex">
         {testimonials.map((t) => (
           <figure data-slide class="w-full shrink-0 rounded-3xl bg-card p-8 sm:p-10">
             <span class="font-display text-5xl font-black leading-none text-lime" aria-hidden="true">“</span>
             <blockquote class="mt-2 max-w-3xl text-lg leading-relaxed text-white/90 sm:text-xl">{t.quote}</blockquote>
             <figcaption class="mt-6 flex items-center gap-3">
-              <img src={t.img} alt="" width="48" height="48" loading="eager" class="h-12 w-12 rounded-full object-cover" />
+              <img src={t.img} alt="" width="48" height="48" loading="eager" class="h-12 w-12 rounded-full bg-white/10 object-cover" />
               <span><span class="block font-semibold">{t.name}</span><span class="block text-sm text-white/55">{t.company}</span></span>
               <span class="ml-auto text-lime" aria-label="5 out of 5 stars">★★★★★</span>
             </figcaption>
