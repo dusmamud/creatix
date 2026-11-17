@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Page not found — Creatix" description="This page does not exist. Head back to the Creatix home page.">
+  <section class="flex min-h-[70vh] flex-col items-center justify-center bg-ink px-4 text-center">
+    <p class="font-display text-8xl font-black text-lime">404</p>
+    <h1 class="mt-4 font-display text-3xl font-extrabold">This page went missing.</h1>
+    <p class="mt-2 max-w-md text-sm text-white/60">The link may be old, or the page may have moved. The good news: the home page is right here.</p>
+    <div class="mt-6 flex gap-3">
+      <a href="/" class="rounded-full bg-lime px-6 py-3 text-sm font-bold text-ink transition hover:bg-white">Back to Home</a>
+      <a href="/projects" class="rounded-full border border-line px-6 py-3 text-sm font-semibold transition hover:border-lime hover:text-lime">See Our Work</a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,19 @@
+# Creatix — Full Reference
+
+Creatix is a creative design agency based in Mumbai, India, working worldwide.
+Founded 2016. 10+ years experience, 2,000+ companies served, 150M+ in tracked revenue.
+
+## Services
+- UI/UX Design — from Rs 49,999. User research, wireframes, prototypes, design systems, usability testing.
+- Web Development — from Rs 59,999. Static & CMS websites, e-commerce, performance-first builds, SEO-ready.
+- 3D Designs — from Rs 39,999. Product visualisation, 3D brand illustrations, packaging renders.
+- Motion Graphics — from Rs 29,999. Explainer videos, social reels, logo animation.
+
+## Process
+1. Free discovery call. 2. Fixed quote & timeline. 3. Weekly design reviews. 4. Launch + 30 days free support.
+
+## Contact
+Email hello@creatix.in · Phone +91 98765 43210 · Mon-Sat, 10am-7pm IST.
+
+## Pages
+Home / · About /about/ · Services /services/ · Projects /projects/ · Team /team/ · Reviews /reviews/ · FAQ /faq/ · Contact /contact/ · Privacy /privacy/ · Terms /terms/

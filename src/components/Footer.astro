@@ -1,0 +1,67 @@
+---
+import Starburst from './Starburst.astro';
+import { contact, socials, site } from '../data/site';
+const cols = [
+  { title: 'Company', links: [{ href: '/about', label: 'About Us' }, { href: '/team', label: 'Our Team' }, { href: '/projects', label: 'Projects' }, { href: '/reviews', label: 'Reviews' }, { href: '/faq', label: 'FAQ' }] },
+  { title: 'Services', links: [{ href: '/services/ui-ux-design', label: 'UI/UX Design' }, { href: '/services/web-development', label: 'Web Development' }, { href: '/services/3d-designs', label: '3D Designs' }, { href: '/services/motion-graphics', label: 'Motion Graphics' }] },
+  { title: 'Support', links: [{ href: '/contact', label: 'Contact Us' }, { href: '/privacy', label: 'Privacy Policy' }, { href: '/terms', label: 'Terms of Service' }] },
+];
+---
+<footer class="bg-lime px-4 pb-6 pt-10 text-ink sm:px-6">
+  <div class="mx-auto max-w-6xl">
+    <div class="flex flex-col gap-10 border-b border-ink/15 pb-10 md:flex-row md:justify-between">
+      <div class="max-w-xs">
+        <a href="/" class="flex items-center gap-2">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            {Array.from({ length: 12 }, (_, i) => { const a = (i * 30 * Math.PI) / 180; const r2 = i % 2 === 0 ? 15 : 10.5; return { x1: 16 + 5 * Math.cos(a), y1: 16 + 5 * Math.sin(a), x2: 16 + r2 * Math.cos(a), y2: 16 + r2 * Math.sin(a) }; }).map((s) => (
+              <line x1={s.x1.toFixed(2)} y1={s.y1.toFixed(2)} x2={s.x2.toFixed(2)} y2={s.y2.toFixed(2)} stroke="#0b0b0b" stroke-width="3.4" stroke-linecap="round" />
+            ))}
+            <circle cx="16" cy="16" r="3.4" fill="#0b0b0b" />
+          </svg>
+          <span class="font-display text-2xl font-black tracking-tight">Creatix</span>
+        </a>
+        <p class="mt-3 text-sm leading-relaxed text-ink/75">A creative design agency. We turn ideas into masterpieces — brands, websites and motion that people remember.</p>
+        <p class="mt-4 text-sm font-semibold">{contact.email}</p>
+        <p class="text-sm font-semibold">{contact.phoneDisplay}</p>
+        <p class="mt-1 text-xs text-ink/60">{contact.location}</p>
+      </div>
+      <div class="grid grid-cols-2 gap-8 sm:grid-cols-3">
+        {cols.map((c) => (
+          <div>
+            <h3 class="font-display text-sm font-extrabold uppercase tracking-wider">{c.title}</h3>
+            <ul class="mt-3 space-y-2 text-sm">
+              {c.links.map((l) => (<li><a href={l.href} class="text-ink/75 transition hover:text-ink hover:underline">{l.label}</a></li>))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div class="max-w-xs">
+        <h3 class="font-display text-sm font-extrabold uppercase tracking-wider">Subscribe to our newsletter</h3>
+        <p class="mt-3 text-sm text-ink/75">Design tips and new work, once a month. No spam.</p>
+        <form id="newsletter-form" class="mt-3 flex overflow-hidden rounded-full border border-ink/25 bg-white/40">
+          <label class="sr-only" for="newsletter-email">Email address</label>
+          <input id="newsletter-email" type="email" required placeholder="Enter your email" class="w-full bg-transparent px-4 py-2.5 text-sm outline-none placeholder:text-ink/50" />
+          <button type="submit" class="shrink-0 bg-ink px-4 text-sm font-semibold text-white transition hover:bg-ink-2">Join</button>
+        </form>
+        <p id="newsletter-ok" class="mt-2 hidden text-sm font-semibold">Thanks — you are on the list.</p>
+      </div>
+    </div>
+    <div class="flex flex-col items-center justify-between gap-4 pt-6 sm:flex-row">
+      <p class="text-xs text-ink/70">© {site.year} Creatix. All rights reserved.</p>
+      <div class="flex items-center gap-2">
+        {socials.map((s) => (
+          <a href={s.href} aria-label={s.label} class="grid h-9 w-9 place-items-center rounded-full border border-ink/25 text-ink transition hover:bg-ink hover:text-lime">
+            <span class="text-[11px] font-bold">{s.label.slice(0, 2).toUpperCase()}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+  document.getElementById('newsletter-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('newsletter-ok')?.classList.remove('hidden');
+    (e.target as HTMLFormElement).reset();
+  });
+</script>

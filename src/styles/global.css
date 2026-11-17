@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Archivo", "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --color-ink: #0b0b0b;
+  --color-ink-2: #141414;
+  --color-card: #1c1c1c;
+  --color-card-2: #262626;
+  --color-mist: #f2f2ef;
+  --color-lime: #a3e635;
+  --color-lime-deep: #84cc16;
+  --color-line: rgba(255, 255, 255, 0.14);
+}
+
+@font-face { font-family: "Archivo"; src: url("/fonts/archivo-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("/fonts/archivo-800.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Archivo"; src: url("/fonts/archivo-900.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("/fonts/inter-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("/fonts/inter-500.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("/fonts/inter-600.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("/fonts/inter-700.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+
+html { scroll-behavior: smooth; }
+html, body { overflow-x: clip; }
+body { background: #0b0b0b; color: #fff; font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+::selection { background: #a3e635; color: #0b0b0b; }
+
+.font-display { font-family: var(--font-display); }
+
+/* Lime highlight behind a word, like the design's "Services" chip */
+.hl { background: #a3e635; color: #0b0b0b; padding: 0.02em 0.28em; border-radius: 0.35em; display: inline-block; transform: rotate(-1.5deg); }
+
+/* Marquee */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 22s linear infinite; }
+.marquee-track-slow { animation: marquee 32s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track, .marquee-track-slow { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* Service rows */
+.service-row { transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease; }
+.service-row:hover, .service-row:focus-visible { background: #a3e635; border-color: #a3e635; color: #0b0b0b; }
+.service-row:hover .service-num, .service-row:focus-visible .service-num { color: #0b0b0b; }
+.service-row:hover .service-arrow, .service-row:focus-visible .service-arrow { transform: translateX(4px); color: #0b0b0b; }
+.service-arrow { transition: transform 0.25s ease, color 0.25s ease; }
+
+/* Reveal-on-scroll: visible by default. GSAP `from()` (motion.ts) hides
+   elements only when JS + ScrollTrigger are actually running, so content
+   can never get stuck invisible if animation setup fails. */
+.reveal { opacity: 1; transform: none; }
+
+/* Testimonial slider */
+.testi-track { transition: transform 0.5s ease; }
+
+/* Starburst spin, slow */
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin-slow 14s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .spin-slow { animation: none; } }

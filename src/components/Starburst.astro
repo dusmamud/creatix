@@ -1,0 +1,20 @@
+---
+// Lime starburst mark — pure SVG paths, zero <text>. 12 spokes radiating
+// from the centre, alternating long/short, like the design's ✳ doodle.
+export interface Props { size?: number; class?: string }
+const { size = 28, class: cls = '' } = Astro.props;
+const spokes = Array.from({ length: 12 }, (_, i) => {
+  const a = (i * 30 * Math.PI) / 180;
+  const long = i % 2 === 0;
+  const r1 = 5, r2 = long ? 15 : 10.5;
+  const x1 = 16 + r1 * Math.cos(a), y1 = 16 + r1 * Math.sin(a);
+  const x2 = 16 + r2 * Math.cos(a), y2 = 16 + r2 * Math.sin(a);
+  return { x1, y1, x2, y2 };
+});
+---
+<svg width={size} height={size} viewBox="0 0 32 32" fill="none" class={cls} aria-hidden="true">
+  {spokes.map((s) => (
+    <line x1={s.x1.toFixed(2)} y1={s.y1.toFixed(2)} x2={s.x2.toFixed(2)} y2={s.y2.toFixed(2)} stroke="#a3e635" stroke-width="3.4" stroke-linecap="round" />
+  ))}
+  <circle cx="16" cy="16" r="3.4" fill="#a3e635" />
+</svg>

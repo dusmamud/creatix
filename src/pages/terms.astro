@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+const lead = 'Last updated: 17 November 2026. The short version: be kind, pay on time, and the work is yours when the invoice is settled.';
+---
+<Layout title="Terms of Service — Creatix" description="Creatix terms of service: quotes, payment, ownership and revisions." lead={lead}>
+  <PageHero eyebrow="Legal" title="Terms of Service" lead={lead} />
+  <section class="bg-ink px-4 py-14 sm:px-6">
+    <div class="mx-auto max-w-3xl space-y-6 leading-relaxed text-white/75">
+      <p><strong class="text-white">Quotes.</strong> Every project starts with a free discovery call and a fixed written quote. The quote holds for 30 days.</p>
+      <p><strong class="text-white">Payment.</strong> 50% to start, 50% on delivery, unless the quote says otherwise. Work begins once the first payment clears.</p>
+      <p><strong class="text-white">Revisions.</strong> Two rounds of revisions are included in every quote. Extra rounds are billed at the rate in your quote.</p>
+      <p><strong class="text-white">Ownership.</strong> Final files and licences transfer to you once the invoice is paid in full. We may show the work in our portfolio unless you ask us not to.</p>
+      <p><strong class="text-white">Timelines.</strong> Dates in the quote assume prompt feedback from you. Delays in feedback move the delivery date by the same amount.</p>
+      <p><strong class="text-white">Cancellation.</strong> Either side may cancel in writing. Work completed up to that point is billed at the quoted rate.</p>
+    </div>
+  </section>
+</Layout>

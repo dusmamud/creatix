@@ -1,0 +1,19 @@
+---
+export interface Props { items?: string[]; dark?: boolean }
+const { items = ['Innovate', 'Inspire', 'Create'], dark = true } = Astro.props;
+const row = [...items, ...items, ...items];
+---
+<div class:list={['overflow-hidden py-6', dark ? 'bg-ink' : 'bg-mist']} aria-hidden="true">
+  <div class="marquee-track flex w-max items-center gap-8 whitespace-nowrap">
+    {[0, 1].map(() => (
+      <span class="flex items-center gap-8">
+        {row.map((w) => (
+          <span class="flex items-center gap-8">
+            <span class:list={['font-display text-4xl font-black tracking-tight sm:text-6xl', dark ? 'text-white' : 'text-ink']}>{w}</span>
+            <span class="text-lime text-3xl sm:text-5xl">✦</span>
+          </span>
+        ))}
+      </span>
+    ))}
+  </div>
+</div>

@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { team } from '../data/site';
+const lead = 'Six people, four disciplines, one standard: work we are proud to sign. Meet the designers, developers and strategists behind Creatix.';
+---
+<Layout title="Meet the Team — Creatix" description="Meet the Creatix team: designers, developers, 3D artists and strategists behind 2,000+ brand projects." lead={lead} ogImage="https://creatix.pages.dev/images/og-team.jpg">
+  <PageHero eyebrow="Our people" title="Meet the team." lead={lead} />
+  <section class="bg-ink px-4 py-14 sm:px-6">
+    <div class="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {team.map((m) => (
+        <article class="reveal rounded-2xl bg-mist p-6 text-ink">
+          <img src={m.img} alt={`Portrait of ${m.name}`} width="200" height="200" loading="lazy" class="h-28 w-28 rounded-full object-cover ring-4 ring-lime" />
+          <h2 class="mt-4 font-display text-xl font-extrabold">{m.name}</h2>
+          <p class="text-sm font-bold text-lime-deep">{m.role}</p>
+          <p class="mt-2 text-sm leading-relaxed text-ink/70">{m.bio}</p>
+        </article>
+      ))}
+    </div>
+    <div class="mx-auto mt-10 max-w-6xl rounded-2xl bg-card p-8 text-center">
+      <h2 class="reveal font-display text-2xl font-extrabold">Want to work with us?</h2>
+      <p class="mx-auto mt-2 max-w-md text-sm text-white/65">Tell us about your project and we will reply within one working day.</p>
+      <a href="/contact" class="mt-5 inline-block rounded-full bg-lime px-6 py-3 text-sm font-bold text-ink transition hover:bg-white">Start Your Project →</a>
+    </div>
+  </section>
+  <ContactCTA />
+</Layout>

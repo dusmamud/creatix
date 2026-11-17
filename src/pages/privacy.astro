@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+const lead = 'Last updated: 17 November 2026. Creatix collects only what you send us — and nothing you do not.';
+---
+<Layout title="Privacy Policy — Creatix" description="Creatix privacy policy: what we collect, why, and how to ask us to delete it." lead={lead}>
+  <PageHero eyebrow="Legal" title="Privacy Policy" lead={lead} />
+  <section class="bg-ink px-4 py-14 sm:px-6">
+    <div class="mx-auto max-w-3xl space-y-6 leading-relaxed text-white/75">
+      <p><strong class="text-white">What we collect.</strong> When you contact us, you share your name, email and project details. Our contact form has no backend — it opens your own mail app, so nothing is stored on our servers by the form itself.</p>
+      <p><strong class="text-white">What we do with it.</strong> We use your details only to reply to you and to prepare a quote. We never sell, rent or share your details with advertisers.</p>
+      <p><strong class="text-white">Cookies &amp; analytics.</strong> This site does not set tracking cookies today. If we add analytics later, this page will be updated first.</p>
+      <p><strong class="text-white">Your rights.</strong> Write to <a class="text-lime underline" href="mailto:hello@creatix.in">hello@creatix.in</a> at any time to ask what we hold about you, or to ask us to delete it.</p>
+      <p><strong class="text-white">Changes.</strong> If this policy changes, the "last updated" date above changes with it.</p>
+    </div>
+  </section>
+</Layout>

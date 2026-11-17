@@ -1,0 +1,16 @@
+# Creatix
+
+> Creatix is a creative design agency — UI/UX design, web development, 3D design and motion graphics for brands that want to stand out.
+
+- [Home](https://creatix.pages.dev/)
+- [About Us](https://creatix.pages.dev/about/)
+- [Services](https://creatix.pages.dev/services/)
+- [UI/UX Design](https://creatix.pages.dev/services/ui-ux-design/)
+- [Web Development](https://creatix.pages.dev/services/web-development/)
+- [3D Designs](https://creatix.pages.dev/services/3d-designs/)
+- [Motion Graphics](https://creatix.pages.dev/services/motion-graphics/)
+- [Projects](https://creatix.pages.dev/projects/)
+- [Meet the Team](https://creatix.pages.dev/team/)
+- [Reviews](https://creatix.pages.dev/reviews/)
+- [FAQ](https://creatix.pages.dev/faq/)
+- [Contact Us](https://creatix.pages.dev/contact/)

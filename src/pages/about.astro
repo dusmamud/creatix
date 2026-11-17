@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import StatsBar from '../components/StatsBar.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { team } from '../data/site';
+const lead = 'Creatix is a creative design agency of designers, developers and storytellers. We are a compact team — and that is our strength: every project gets senior people, honest timelines and work we are proud to sign.';
+---
+<Layout title="About Us — Creatix" description="Meet Creatix: a compact creative agency with 10+ years of experience, 2,000+ clients and one rule — work we are proud to sign." lead={lead} ogImage="https://creatix.pages.dev/images/og-about.jpg">
+  <PageHero eyebrow="About Us" title="A compact team with outsized ideas." lead={lead} />
+  <section class="bg-ink px-4 py-14 sm:px-6">
+    <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
+      <div class="reveal">
+        <h2 class="font-display text-3xl font-extrabold">Our story</h2>
+        <p class="mt-4 leading-relaxed text-white/70">Creatix started in 2016 with two designers, one laptop and a stubborn idea: great design should not need a 50-person agency or a six-figure budget. Ten years later we have shipped work for 2,000+ companies — startups, cafés, fintechs and global brands — and the idea has not changed.</p>
+        <p class="mt-4 leading-relaxed text-white/70">We stay small on purpose. You talk to the people doing the work, not an account manager relaying messages. That is why our clients stay — most of our work comes from repeat clients and referrals.</p>
+      </div>
+      <div class="reveal overflow-hidden rounded-2xl">
+        <img src="/images/office-team.jpg" alt="The Creatix team in the studio" width="960" height="620" loading="lazy" class="h-full w-full object-cover grayscale" />
+      </div>
+    </div>
+    <div class="mx-auto mt-12 grid max-w-6xl gap-4 sm:grid-cols-3">
+      {[{ t: 'Honest timelines', d: 'We say what we can do, by when — and we hit it.' }, { t: 'Senior people only', d: 'No juniors learning on your project. The people you meet do the work.' }, { t: 'Work we sign', d: 'If we would not put our name on it, we do not ship it.' }].map((v) => (
+        <div class="reveal rounded-2xl bg-card p-6"><h3 class="font-display text-lg font-extrabold text-lime">{v.t}</h3><p class="mt-2 text-sm leading-relaxed text-white/65">{v.d}</p></div>
+      ))}
+    </div>
+  </section>
+  <StatsBar />
+  <section class="bg-ink px-4 py-14 sm:px-6">
+    <div class="mx-auto max-w-6xl">
+      <h2 class="reveal font-display text-3xl font-extrabold">The people behind the work</h2>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {team.slice(0, 3).map((m) => (
+          <article class="reveal rounded-2xl bg-mist p-5 text-ink">
+            <img src={m.img} alt={`Portrait of ${m.name}`} width="200" height="200" loading="lazy" class="h-24 w-24 rounded-full object-cover" />
+            <h3 class="mt-3 font-display text-lg font-extrabold">{m.name}</h3>
+            <p class="text-sm font-semibold text-ink/60">{m.role}</p>
+            <p class="mt-2 text-sm text-ink/70">{m.bio}</p>
+          </article>
+        ))}
+      </div>
+      <a href="/team" class="mt-6 inline-block rounded-full bg-lime px-6 py-3 text-sm font-bold text-ink transition hover:bg-white">Meet the full team →</a>
+    </div>
+  </section>
+  <ContactCTA />
+</Layout>

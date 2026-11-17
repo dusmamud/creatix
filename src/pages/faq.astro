@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+import { faqs } from '../data/site';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+const lead = 'Answers to the questions every new client asks — timelines, prices, ownership and support. Anything else? Write to hello@creatix.in.';
+---
+<Layout title="FAQ — Creatix" description="Frequently asked questions about Creatix: project timelines, prices, file ownership and post-launch support." jsonLd={jsonLd} lead={lead}>
+  <PageHero eyebrow="FAQ" title="Questions, answered." lead={lead} />
+  <section class="bg-ink px-4 py-14 sm:px-6">
+    <div class="mx-auto max-w-3xl space-y-3">
+      {faqs.map((f) => (
+        <details class="reveal group rounded-2xl bg-card p-5 open:border-lime/40">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-bold">{f.q}<span class="text-lime transition group-open:rotate-45" aria-hidden="true">+</span></summary>
+          <p class="mt-3 text-sm leading-relaxed text-white/70">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+  <ContactCTA />
+</Layout>
