@@ -8,6 +8,7 @@ export default defineConfig({
   // Cloudflare Pages enforces a trailing slash on directory builds (308
   // otherwise); keep config + canonicals + sitemap + internal links aligned.
   trailingSlash: 'always',
-  integrations: [sitemap()],
+  // Search-result pages should not be indexed: exclude /search/ from the sitemap.
+  integrations: [sitemap({ filter: (page) => page !== 'https://creatiix.pages.dev/search/' })],
   vite: { plugins: [tailwindcss()] },
 });

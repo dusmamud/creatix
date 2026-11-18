@@ -7,7 +7,7 @@ import { services } from '../../data/site';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  itemListElement: services.map((s, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Service', name: s.title, url: `https://creatiix.pages.dev/services/${s.slug}/`, description: s.short } })),
+  itemListElement: services.map((s, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Service', name: s.title, url: `https://creatiix.pages.dev/services/${s.slug}/`, description: s.short, serviceType: s.title, areaServed: 'Worldwide', provider: { '@type': 'ProfessionalService', name: 'Creatix', url: 'https://creatiix.pages.dev/' } } })),
 };
 const lead = 'Four services, one goal: a brand people remember. UI/UX design, web development, 3D design and motion graphics — each with a fixed starting price and a senior team.';
 ---

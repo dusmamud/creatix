@@ -98,6 +98,7 @@ export const projects = [
 export const blogPosts = [
   {
     slug: 'why-fast-websites-convert',
+    seoTitle: 'Why Fast Websites Convert — Creatix Blog',
     title: 'Why Fast Websites Convert (and Slow Ones Quietly Lose Sales)',
     category: 'Web Development',
     author: 'Sana Sheikh',
@@ -117,6 +118,7 @@ export const blogPosts = [
   },
   {
     slug: 'brand-identity-process',
+    seoTitle: 'How a Brand Identity Gets Made — Creatix Blog',
     title: 'How a Brand Identity Actually Gets Made: Our 5-Step Process',
     category: 'Branding',
     author: 'Kabir Mehta',
@@ -136,6 +138,7 @@ export const blogPosts = [
   },
   {
     slug: 'ux-audit-checklist',
+    seoTitle: 'The UX Audit Checklist — Creatix Blog',
     title: 'The UX Audit Checklist We Run Before Every Redesign',
     category: 'UX Design',
     author: 'Kabir Mehta',
@@ -155,6 +158,7 @@ export const blogPosts = [
   },
   {
     slug: '3d-product-visuals-sell-more',
+    seoTitle: 'Do 3D Product Visuals Sell More? — Creatix Blog',
     title: 'Do 3D Product Visuals Actually Sell More? What We Have Seen',
     category: '3D Design',
     author: 'Rohan Iyer',
@@ -174,6 +178,7 @@ export const blogPosts = [
   },
   {
     slug: 'motion-graphics-for-social',
+    seoTitle: 'Motion Graphics for Social — Creatix Blog',
     title: 'Motion Graphics for Social: How to Stop the Scroll in 3 Seconds',
     category: 'Motion Graphics',
     author: 'Rohan Iyer',
@@ -193,6 +198,7 @@ export const blogPosts = [
   },
   {
     slug: 'how-much-does-a-website-cost-india',
+    seoTitle: 'How Much Does a Website Cost in India? — Creatix Blog',
     title: 'How Much Does a Website Cost in India in 2026? An Honest Breakdown',
     category: 'Strategy',
     author: 'Ananya Das',

@@ -7,11 +7,11 @@ import { testimonials } from '../data/site';
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  itemListElement: testimonials.map((t, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Review', author: { '@type': 'Person', name: t.name }, reviewBody: t.quote, reviewRating: { '@type': 'Rating', ratingValue: '5' } } })),
+  itemListElement: testimonials.map((t, i) => ({ '@type': 'ListItem', position: i + 1, item: { '@type': 'Review', author: { '@type': 'Person', name: t.name }, reviewBody: t.quote, reviewRating: { '@type': 'Rating', ratingValue: '5' }, itemReviewed: { '@type': 'ProfessionalService', name: 'Creatix', url: 'https://creatiix.pages.dev/' } } })),
 };
 const lead = 'Creatix holds a 4.9 out of 5 average across 212 client reviews. Here is what founders and marketing teams say after working with us.';
 ---
-<Layout title="Reviews — Creatix" description="Client reviews for Creatix: 4.9 out of 5 across 212 reviews. Read what founders and marketing teams say." jsonLd={jsonLd} lead={lead}>
+<Layout title="Client Reviews — Creatix | Rated 4.9 out of 5" description="Client reviews for Creatix: 4.9 out of 5 across 212 reviews. Read what founders and marketing teams say." jsonLd={jsonLd} lead={lead}>
   <PageHero eyebrow="Reviews" title="Clients who would hire us again." lead={lead} />
   <section class="bg-ink px-4 pt-6 sm:px-6">
     <div class="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2">

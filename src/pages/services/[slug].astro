@@ -9,16 +9,19 @@ export function getStaticPaths() {
 }
 const { service } = Astro.props;
 const related = projects.filter((p) => p.service === service.title);
+const description = `${service.short} ${service.title} by Creatix — fixed quotes, senior team, 10+ years.`;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: service.title,
-  description: service.short,
-  provider: { '@type': 'ProfessionalService', name: 'Creatix', url: 'https://creatiix.pages.dev/' },
+  description,
+  serviceType: service.title,
+  areaServed: 'Worldwide',
+  provider: { '@type': 'ProfessionalService', name: 'Creatix', url: 'https://creatiix.pages.dev/', image: 'https://creatiix.pages.dev/images/og-home.jpg', telephone: '+91 98765 43210', priceRange: '₹₹', address: { '@type': 'PostalAddress', addressLocality: 'Mumbai', addressRegion: 'Maharashtra', addressCountry: 'IN' } },
 };
 const lead = `${service.title} at Creatix — ${service.short} Starting ${service.price.toLowerCase()}.`;
 ---
-<Layout title={`${service.title} — Creatix`} description={service.short} jsonLd={jsonLd} lead={lead}>
+<Layout title={`${service.title} — Creatix`} description={description} jsonLd={jsonLd} lead={lead}>
   <PageHero eyebrow={`Service ${service.num}`} title={service.title} lead={lead} />
   <section class="bg-ink px-4 py-14 sm:px-6">
     <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.2fr_1fr]">

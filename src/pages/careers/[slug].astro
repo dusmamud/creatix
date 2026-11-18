@@ -16,12 +16,14 @@ const jsonLd = {
   title: job.title,
   description: job.intro,
   employmentType: 'FULL_TIME',
-  hiringOrganization: { '@type': 'Organization', name: 'Creatix', sameAs: 'https://creatiix.pages.dev/' },
-  jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: 'Mumbai', addressCountry: 'IN' } },
+  // datePosted = the date this listing was first published on the site (Batch 1, 2026-11-18); no earlier listed date exists in the source.
+  datePosted: '2026-11-18',
+  hiringOrganization: { '@type': 'Organization', name: 'Creatix', url: 'https://creatiix.pages.dev/', logo: 'https://creatiix.pages.dev/favicon.svg' },
+  jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: 'Mumbai', addressRegion: 'Maharashtra', addressCountry: 'IN' } },
 };
 const lead = `${job.intro}`;
 ---
-<Layout title={`${job.title} — Careers at Creatix`} description={`${job.title} at Creatix (${job.type}, ${job.experience}, ${job.salary}). ${job.intro}`} jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-careers.jpg">
+<Layout title={`${job.title} — Careers at Creatix`} description={`${job.title} at Creatix — ${job.type}, ${job.experience} experience, ${job.salary}. Apply with your portfolio.`} jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-careers.jpg">
   <PageHero eyebrow={`Careers · ${job.dept}`} title={job.title} lead={`${job.type} · ${job.experience} experience · ${job.salary}`} />
   <section class="bg-ink px-4 py-14 sm:px-6">
     <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_320px]">

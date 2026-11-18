@@ -21,9 +21,12 @@ const jsonLd = {
   dateCreated: project.year,
   creator: { '@type': 'Organization', name: 'Creatix', url: 'https://creatiix.pages.dev/' },
 };
+// (meta description is the `description` const below; schema keeps the short summary)
+const descriptionLong = `${project.summary} A Creatix ${project.category} case study (${project.year}) — challenge, solution and results.`;
+const description = descriptionLong.length > 160 ? `${project.summary} A Creatix ${project.category} case study (${project.year}).` : descriptionLong;
 const lead = `${project.title} — ${project.summary}`;
 ---
-<Layout title={`${project.title} — Creatix`} description={project.summary} jsonLd={jsonLd} lead={lead}>
+<Layout title={`${project.title} — Creatix`} description={description} jsonLd={jsonLd} lead={lead}>
   <PageHero eyebrow={`${project.category} · ${project.year}`} title={project.title} lead={lead} />
   <section class="bg-ink px-4 py-14 sm:px-6">
     <div class="mx-auto max-w-6xl">

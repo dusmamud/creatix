@@ -16,7 +16,9 @@ const jsonLd = {
   '@type': 'BlogPosting',
   headline: post.title,
   description: post.excerpt,
+  image: `https://creatiix.pages.dev${post.img}`,
   datePublished: post.date,
+  dateModified: post.date,
   author: { '@type': 'Person', name: post.author, jobTitle: post.authorRole },
   publisher: { '@type': 'Organization', name: 'Creatix', url: 'https://creatiix.pages.dev/' },
   mainEntityOfPage: `https://creatiix.pages.dev/blog/${post.slug}/`,
@@ -24,7 +26,7 @@ const jsonLd = {
 };
 const lead = post.excerpt;
 ---
-<Layout title={`${post.title} — Creatix Blog`} description={post.excerpt} jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-blog.jpg">
+<Layout title={post.seoTitle} description={post.excerpt} jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-blog.jpg">
   <PageHero eyebrow={`${post.category} · ${post.readingTime}`} title={post.title} lead={lead} />
   <section class="bg-ink px-4 py-14 sm:px-6">
     <div class="mx-auto max-w-6xl">

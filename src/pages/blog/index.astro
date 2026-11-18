@@ -8,12 +8,12 @@ const jsonLd = {
   '@type': 'Blog',
   name: 'Creatix Blog',
   url: 'https://creatiix.pages.dev/blog/',
-  blogPost: blogPosts.map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: `https://creatiix.pages.dev/blog/${p.slug}/` })),
+  blogPost: blogPosts.map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: `https://creatiix.pages.dev/blog/${p.slug}/`, image: `https://creatiix.pages.dev${p.img}`, datePublished: p.date, author: { '@type': 'Person', name: p.author } })),
 };
 const lead = 'Practical notes from the studio — fast websites, brand identity, UX audits, 3D visuals, motion and honest pricing. No fluff, just what works.';
 const categories = [...new Set(blogPosts.map((p) => p.category))];
 ---
-<Layout title="Blog — Creatix" description="The Creatix blog: practical notes on fast websites, brand identity, UX audits, 3D visuals, motion graphics and website pricing." jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-blog.jpg">
+<Layout title="Creatix Blog — Design, Speed & Branding Notes" description="The Creatix blog: practical notes on fast websites, brand identity, UX audits, 3D visuals, motion graphics and website pricing." jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-blog.jpg">
   <PageHero eyebrow="Blog" title="Notes from the studio." lead={lead} />
   <section class="bg-ink px-4 py-14 sm:px-6">
     <div class="mx-auto max-w-6xl">
