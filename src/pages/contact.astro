@@ -3,8 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import PageHero from '../components/PageHero.astro';
 import { contact, services } from '../data/site';
 const lead = 'Tell us about your project. We reply within one working day. There is no backend on this form — submitting opens your mail app with everything prefilled, so nothing is lost.';
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact Creatix',
+  description: 'Contact Creatix: start a project, ask a question, or book a free discovery call. We reply within one working day.',
+  mainEntity: { '@type': 'Organization', name: 'Creatix', url: 'https://creatiix.pages.dev/', email: contact.email, telephone: contact.phoneDisplay, address: { '@type': 'PostalAddress', addressLocality: 'Mumbai', addressRegion: 'Maharashtra', addressCountry: 'IN' } },
+};
 ---
-<Layout title="Contact Us — Creatix" description="Contact Creatix: start a project, ask a question, or book a free discovery call. We reply within one working day." lead={lead} ogImage="https://creatiix.pages.dev/images/og-contact.jpg">
+<Layout title="Contact Us — Creatix" description="Contact Creatix: start a project, ask a question, or book a free discovery call. We reply within one working day." jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-contact.jpg">
   <PageHero eyebrow="Contact Us" title="Let's create something exceptional." lead={lead} />
   <section class="bg-ink px-4 py-14 sm:px-6">
     <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_360px]">

@@ -8,7 +8,7 @@ const jsonLd = {
   '@type': 'Blog',
   name: 'Creatix Blog',
   url: 'https://creatiix.pages.dev/blog/',
-  blogPost: blogPosts.map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: `https://creatiix.pages.dev/blog/${p.slug}/`, image: `https://creatiix.pages.dev${p.img}`, datePublished: p.date, author: { '@type': 'Person', name: p.author } })),
+  blogPost: blogPosts.map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: `https://creatiix.pages.dev/blog/${p.slug}/`, image: `https://creatiix.pages.dev${p.img}`, datePublished: `${p.date}T00:00:00+05:30`, author: { '@type': 'Person', name: p.author } })),
 };
 const lead = 'Practical notes from the studio — fast websites, brand identity, UX audits, 3D visuals, motion and honest pricing. No fluff, just what works.';
 const categories = [...new Set(blogPosts.map((p) => p.category))];
@@ -23,7 +23,7 @@ const categories = [...new Set(blogPosts.map((p) => p.category))];
       </div>
       <div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {blogPosts.map((p) => (
-          <a href={`/blog/${p.slug}/`}` class="reveal group flex flex-col overflow-hidden rounded-2xl bg-card">
+          <a href={`/blog/${p.slug}/`} class="reveal group flex flex-col overflow-hidden rounded-2xl bg-card">
             <picture class="contents">
               <source srcset={`${p.img.replace('.jpg', '-640.webp')} 640w, ${p.img.replace('.jpg', '.webp')} 1280w`} sizes="(max-width: 768px) 100vw, 400px" type="image/webp" />
               <img src={p.img} srcset={`${p.img.replace('.jpg', '-640.jpg')} 640w, ${p.img} 1280w`} sizes="(max-width: 768px) 100vw, 400px" alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full bg-card-2 object-cover transition group-hover:scale-105" />

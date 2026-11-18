@@ -27,8 +27,8 @@ const current = Astro.url.pathname;
       {links.map((l) => (
         <li><a href={l.href} data-nav-for={l.href === '/services/' ? 'services' : l.href === '/reviews/' ? 'reviews' : undefined} class:list={['transition hover:text-lime', { 'text-lime': current === l.href || current.startsWith(l.href) }]}>{l.label}</a></li>
       ))}
-      <li class="group relative">
-        <button type="button" aria-haspopup="true" aria-expanded="false" class="flex items-center gap-1 transition hover:text-lime">More <span aria-hidden="true">▾</span></button>
+      <li id="more-wrap" class="group relative">
+        <button id="more-btn" type="button" aria-haspopup="true" aria-expanded="false" class="flex items-center gap-1 transition hover:text-lime">More <span aria-hidden="true">▾</span></button>
         <ul class="invisible absolute right-0 top-full w-56 rounded-2xl bg-ink p-2 opacity-0 shadow-xl shadow-black/40 transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
           {moreLinks.map((l) => (
             <li><a href={l.href} class="block rounded-xl px-4 py-2.5 text-sm transition hover:bg-white/10 hover:text-lime">{l.label}</a></li>
@@ -65,4 +65,13 @@ const current = Astro.url.pathname;
   btn?.addEventListener('click', open);
   close?.addEventListener('click', shut);
   menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', shut));
+  // Keep the desktop "More" dropdown's aria-expanded in sync with its
+  // CSS hover/focus visibility (group-hover / group-focus-within).
+  const moreBtn = document.getElementById('more-btn');
+  const moreWrap = document.getElementById('more-wrap');
+  const setMore = (expanded) => moreBtn?.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  moreWrap?.addEventListener('mouseenter', () => setMore(true));
+  moreWrap?.addEventListener('mouseleave', () => setMore(false));
+  moreWrap?.addEventListener('focusin', () => setMore(true));
+  moreWrap?.addEventListener('focusout', (e) => { if (moreWrap && !moreWrap.contains(e.relatedTarget)) setMore(false); });
 </script>

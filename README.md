@@ -3,11 +3,13 @@
 Creative agency website — "Empowering Brands Through Creative Solutions".
 
 Built with **Astro 7** + **Tailwind CSS 4** + **GSAP** + **Lenis**, Archivo + Inter
-fonts self-hosted via `@fontsource` (no Google Fonts CDN). Static output,
+fonts self-hosted as woff2 files in `public/fonts` (no Google Fonts CDN). Static output,
 deploys to Cloudflare Pages. Lime `#A3E635` + black + light grey.
 
-21 pages: home, about, services (+ 4 detail pages), projects (+ 6 detail
-pages), team, reviews, contact, FAQ, privacy, terms, 404.
+36 URLs in the sitemap (38 routes total): home, about, services (+ 4 detail
+pages), projects (+ 6 detail pages), blog (+ 6 articles), careers (+ 4 roles),
+team, reviews, clients, process, pricing, book, contact, FAQ, privacy, terms.
+404 and the noindex /search/ page are excluded from the sitemap.
 
 ## Develop
 
@@ -37,5 +39,6 @@ Live URL (after the first successful deploy): https://creatiix.pages.dev
 
 All mock values (team names, email hello@creatix.in, phone +91 98765 43210,
 prices, testimonials, projects) live in `src/data/site.ts` — replace before
-launch. Social links are `#` placeholders. The contact form has no backend
+launch. Social badges are non-link placeholders until real profile URLs are
+added to `socials` in `src/data/site.ts`. The contact form has no backend
 (mailto fallback).

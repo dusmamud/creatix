@@ -63,7 +63,7 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
           <svg class="absolute -left-2 bottom-24 z-20 hidden h-16 w-16 -rotate-12 md:block" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M50 8c-14 4-22 14-24 28-1 8 2 14 8 18" stroke="#0b0b0b" stroke-width="2.5" stroke-linecap="round"/><path d="M34 52l-4 8 10-2" stroke="#0b0b0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div data-hero class="order-3 text-center md:pb-16 md:text-right">
-          <p class="flex justify-center text-lime-deep text-lg leading-none tracking-tight md:justify-end" aria-label="Rated 5 out of 5 stars">★★★★★</p>
+          <p class="flex justify-center text-lime-deep text-lg leading-none tracking-tight md:justify-end" role="img" aria-label="Rated 5 out of 5 stars">★★★★★</p>
           <p class="mt-2 font-display text-2xl font-extrabold">10 Years</p>
           <p class="text-sm text-ink/60">Experience</p>
         </div>
@@ -155,7 +155,7 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
       </div>
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.slice(0, 3).map((p) => (
-          <a href={`/projects/${p.slug}/`}` class="reveal project-card group overflow-hidden rounded-2xl bg-card">
+          <a href={`/projects/${p.slug}/`} class="reveal project-card group overflow-hidden rounded-2xl bg-card">
             <picture class="contents">
               <source srcset={`${p.img.replace('.jpg', '-640.webp')} 640w, ${p.img.replace('.jpg', '.webp')} 1280w`} sizes="(max-width: 768px) 100vw, 400px" type="image/webp" />
               <img src={p.img} srcset={`${p.img.replace('.jpg', '-640.jpg')} 640w, ${p.img} 1280w`} sizes="(max-width: 768px) 100vw, 400px" alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full bg-card-2 object-cover transition duration-300 group-hover:scale-105" />

@@ -1,5 +1,4 @@
 ---
-import Starburst from './Starburst.astro';
 import { contact, socials, site } from '../data/site';
 const cols = [
   { title: 'Company', links: [{ href: '/about/', label: 'About Us' }, { href: '/team/', label: 'Our Team' }, { href: '/projects/', label: 'Projects' }, { href: '/reviews/', label: 'Reviews' }, { href: '/process/', label: 'Our Process' }, { href: '/clients/', label: 'Clients' }, { href: '/careers/', label: 'Careers' }, { href: '/blog/', label: 'Blog' }, { href: '/faq/', label: 'FAQ' }] },
@@ -52,9 +51,15 @@ const cols = [
       <p class="text-xs text-ink/70">© {site.year} Creatix. All rights reserved.</p>
       <div class="flex items-center gap-2">
         {socials.map((s) => (
-          <a href={s.href} aria-label={s.label} class="grid h-9 w-9 place-items-center rounded-full border border-ink/25 text-ink transition hover:bg-ink hover:text-lime">
-            <span class="text-[11px] font-bold">{s.label.slice(0, 2).toUpperCase()}</span>
-          </a>
+          s.href === '#' ? (
+            <span role="img" aria-label={s.label} class="grid h-9 w-9 place-items-center rounded-full border border-ink/25 text-ink transition hover:bg-ink hover:text-lime">
+              <span aria-hidden="true" class="text-[11px] font-bold">{s.label.slice(0, 2).toUpperCase()}</span>
+            </span>
+          ) : (
+            <a href={s.href} aria-label={s.label} class="grid h-9 w-9 place-items-center rounded-full border border-ink/25 text-ink transition hover:bg-ink hover:text-lime">
+              <span class="text-[11px] font-bold">{s.label.slice(0, 2).toUpperCase()}</span>
+            </a>
+          )
         ))}
       </div>
     </div>

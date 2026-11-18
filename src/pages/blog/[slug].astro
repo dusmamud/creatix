@@ -17,8 +17,8 @@ const jsonLd = {
   headline: post.title,
   description: post.excerpt,
   image: `https://creatiix.pages.dev${post.img}`,
-  datePublished: post.date,
-  dateModified: post.date,
+  datePublished: `${post.date}T00:00:00+05:30`,
+  dateModified: `${post.date}T00:00:00+05:30`,
   author: { '@type': 'Person', name: post.author, jobTitle: post.authorRole },
   publisher: { '@type': 'Organization', name: 'Creatix', url: 'https://creatiix.pages.dev/' },
   mainEntityOfPage: `https://creatiix.pages.dev/blog/${post.slug}/`,
@@ -26,7 +26,7 @@ const jsonLd = {
 };
 const lead = post.excerpt;
 ---
-<Layout title={post.seoTitle} description={post.excerpt} jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-blog.jpg">
+<Layout title={post.seoTitle} description={post.excerpt} jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-blog.jpg" ogType="article" publishedTime={`${post.date}T00:00:00+05:30`}>
   <PageHero eyebrow={`${post.category} · ${post.readingTime}`} title={post.title} lead={lead} />
   <section class="bg-ink px-4 py-14 sm:px-6">
     <div class="mx-auto max-w-6xl">
@@ -63,7 +63,7 @@ const lead = post.excerpt;
             <h2 class="font-display text-lg font-extrabold">Read next</h2>
             <ul class="mt-3 space-y-3">
               {related.map((r) => (
-                <li><a href={`/blog/${r.slug}/`}` class="text-sm font-semibold leading-snug text-white/80 transition hover:text-lime">{r.title}</a><p class="text-xs text-white/45">{r.category} · {r.readingTime}</p></li>
+                <li><a href={`/blog/${r.slug}/`} class="text-sm font-semibold leading-snug text-white/80 transition hover:text-lime">{r.title}</a><p class="text-xs text-white/45">{r.category} · {r.readingTime}</p></li>
               ))}
             </ul>
             <a href="/blog/" class="mt-4 inline-block text-sm font-semibold text-lime underline-offset-4 hover:underline">All articles →</a>

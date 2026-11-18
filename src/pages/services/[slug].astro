@@ -21,7 +21,7 @@ const jsonLd = {
 };
 const lead = `${service.title} at Creatix — ${service.short} Starting ${service.price.toLowerCase()}.`;
 ---
-<Layout title={`${service.title} — Creatix`} description={description} jsonLd={jsonLd} lead={lead}>
+<Layout title={`${service.title} — Creatix`} description={description} jsonLd={jsonLd} lead={lead} ogImage="https://creatiix.pages.dev/images/og-services.jpg">
   <PageHero eyebrow={`Service ${service.num}`} title={service.title} lead={lead} />
   <section class="bg-ink px-4 py-14 sm:px-6">
     <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.2fr_1fr]">
@@ -55,7 +55,7 @@ const lead = `${service.title} at Creatix — ${service.short} Starting ${servic
         <h2 class="reveal font-display text-2xl font-extrabold">Recent {service.title.toLowerCase()} work</h2>
         <div class="mt-6 grid gap-4 sm:grid-cols-2">
           {related.map((p) => (
-            <a href={`/projects/${p.slug}/`}` class="reveal group overflow-hidden rounded-2xl bg-card">
+            <a href={`/projects/${p.slug}/`} class="reveal group overflow-hidden rounded-2xl bg-card">
               <picture class="contents">
                 <source srcset={`${p.img.replace('.jpg', '-640.webp')} 640w, ${p.img.replace('.jpg', '.webp')} 1280w`} sizes="(max-width: 768px) 100vw, 400px" type="image/webp" />
                 <img src={p.img} srcset={`${p.img.replace('.jpg', '-640.jpg')} 640w, ${p.img} 1280w`} sizes="(max-width: 768px) 100vw, 400px" alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full object-cover transition group-hover:scale-105" />
@@ -68,7 +68,7 @@ const lead = `${service.title} at Creatix — ${service.short} Starting ${servic
     )}
     <div class="mx-auto mt-10 flex max-w-6xl flex-wrap gap-3">
       {services.filter((s) => s.slug !== service.slug).map((s) => (
-        <a href={`/services/${s.slug}/`}` class="rounded-full border border-line px-4 py-2 text-sm font-semibold transition hover:border-lime hover:text-lime">{s.num} {s.title} →</a>
+        <a href={`/services/${s.slug}/`} class="rounded-full border border-line px-4 py-2 text-sm font-semibold transition hover:border-lime hover:text-lime">{s.num} {s.title} →</a>
       ))}
     </div>
   </section>
