@@ -8,7 +8,7 @@ import { pricingPlans } from '../data/site';
         <h2 id="home-pricing-heading" class="font-display text-3xl font-extrabold sm:text-4xl">Fixed prices. <span class="hl">No surprises.</span></h2>
         <p class="mt-2 max-w-xl text-sm leading-relaxed text-white/60">Four packages, one fixed quote in writing before we start. The final quote never changes mid-project.</p>
       </div>
-      <a href="/pricing" class="rounded-full border border-line px-4 py-2 text-sm font-semibold transition hover:border-lime hover:text-lime">All pricing →</a>
+      <a href="/pricing/" class="rounded-full border border-line px-4 py-2 text-sm font-semibold transition hover:border-lime hover:text-lime">All pricing →</a>
     </div>
     <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {pricingPlans.map((p) => (
@@ -18,8 +18,8 @@ import { pricingPlans } from '../data/site';
           <p class:list={['mt-1 text-sm', p.popular ? 'text-ink/70' : 'text-white/55']}>{p.bestFor}</p>
           <p class="mt-4 font-display text-3xl font-black">{p.price}</p>
           <p class:list={['text-xs', p.popular ? 'text-ink/60' : 'text-white/45']}>{p.per} · {p.timeline}</p>
-          <a href={`/book?plan=${p.slug}`} class:list={['mt-5 block rounded-full px-5 py-3 text-center text-sm font-bold transition', p.popular ? 'bg-ink text-white hover:bg-ink-2' : 'bg-lime text-ink hover:bg-white']}>Book a free call →</a>
-          <a href="/pricing" class:list={['mt-2 block text-center text-sm font-semibold underline-offset-4 hover:underline', p.popular ? 'text-ink/70' : 'text-white/60']}>See what's included</a>
+          <a href={`/book/?plan=${p.slug}`} class:list={['mt-5 block rounded-full px-5 py-3 text-center text-sm font-bold transition', p.popular ? 'bg-ink text-white hover:bg-ink-2' : 'bg-lime text-ink hover:bg-white']}>Book a free call →</a>
+          <a href="/pricing/" class:list={['mt-2 block text-center text-sm font-semibold underline-offset-4 hover:underline', p.popular ? 'text-ink/70' : 'text-white/60']}>See what's included</a>
         </article>
       ))}
     </div>

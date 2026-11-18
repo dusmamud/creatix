@@ -51,7 +51,7 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
       <div class="relative mx-auto mt-6 grid max-w-5xl items-end gap-6 md:grid-cols-[1fr_auto_1fr]">
         <div data-hero class="order-2 text-center md:order-1 md:pb-16 md:text-left">
           <p class="mx-auto max-w-[280px] text-sm leading-relaxed text-ink/70 md:mx-0 md:max-w-[240px]">From web development to branding, we deliver innovative strategies that elevate your brand and drive growth. Let's create something exceptional together.</p>
-          <a href="/services" class="mt-4 inline-block rounded-full border border-ink/30 px-4 py-2 text-xs font-semibold transition hover:border-ink hover:bg-ink hover:text-white">Innovate Your Brand</a>
+          <a href="/services/" class="mt-4 inline-block rounded-full border border-ink/30 px-4 py-2 text-xs font-semibold transition hover:border-ink hover:bg-ink hover:text-white">Innovate Your Brand</a>
         </div>
         <div data-hero data-parallax class="relative order-1 md:order-2">
           <div class="absolute left-1/2 top-6 -z-0 h-72 w-72 -translate-x-1/2 rounded-full bg-ink/5 sm:h-96 sm:w-96" aria-hidden="true"></div>
@@ -72,8 +72,8 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
 
   <!-- CTA row straddling the hero edge, as in the design -->
   <div data-hero class="relative z-20 -mt-7 flex flex-col items-center gap-3 px-4 sm:flex-row sm:justify-center">
-    <a href="/contact" data-magnetic class="w-full max-w-xs rounded-full bg-lime px-6 py-3 text-center text-sm font-bold text-ink shadow-lg shadow-lime/30 transition hover:bg-white sm:w-auto">Start Your Project</a>
-    <a href="/about" data-magnetic class="w-full max-w-xs rounded-full border border-ink/30 bg-mist px-6 py-3 text-center text-sm font-semibold text-ink transition hover:bg-ink hover:text-white sm:w-auto">Let's Collaborate</a>
+    <a href="/contact/" data-magnetic class="w-full max-w-xs rounded-full bg-lime px-6 py-3 text-center text-sm font-bold text-ink shadow-lg shadow-lime/30 transition hover:bg-white sm:w-auto">Start Your Project</a>
+    <a href="/about/" data-magnetic class="w-full max-w-xs rounded-full border border-ink/30 bg-mist px-6 py-3 text-center text-sm font-semibold text-ink transition hover:bg-ink hover:text-white sm:w-auto">Let's Collaborate</a>
   </div>
 
   <StatsBar />
@@ -112,7 +112,7 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
     <div class="mx-auto max-w-6xl">
       <div class="reveal flex flex-wrap items-center justify-between gap-4">
         <h2 id="team-heading" class="font-display text-3xl font-extrabold sm:text-4xl">Meet <span class="hl">the Team</span></h2>
-        <a href="/team" class="rounded-full border border-line px-4 py-2 text-sm font-semibold transition hover:border-lime hover:text-lime">View full team →</a>
+        <a href="/team/" class="rounded-full border border-line px-4 py-2 text-sm font-semibold transition hover:border-lime hover:text-lime">View full team →</a>
       </div>
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {team.map((m) => (
@@ -141,11 +141,11 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
     <div class="mx-auto max-w-6xl">
       <div class="reveal flex flex-wrap items-end justify-between gap-4">
         <h2 id="work-heading" class="font-display text-3xl font-extrabold sm:text-4xl">Recent <span class="hl">Work</span></h2>
-        <a href="/projects" class="rounded-full border border-line px-4 py-2 text-sm font-semibold transition hover:border-lime hover:text-lime">All projects →</a>
+        <a href="/projects/" class="rounded-full border border-line px-4 py-2 text-sm font-semibold transition hover:border-lime hover:text-lime">All projects →</a>
       </div>
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.slice(0, 3).map((p) => (
-          <a href={`/projects/${p.slug}`} class="reveal project-card group overflow-hidden rounded-2xl bg-card">
+          <a href={`/projects/${p.slug}/`}` class="reveal project-card group overflow-hidden rounded-2xl bg-card">
             <img src={p.img} alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full bg-card-2 object-cover transition duration-300 group-hover:scale-105" />
             <div class="p-5">
               <p class="text-xs font-bold uppercase tracking-wider text-lime">{p.category} · {p.year}</p>

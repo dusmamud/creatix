@@ -1,19 +1,19 @@
 ---
 import Starburst from './Starburst.astro';
 const links = [
-  { href: '/about', label: 'About Us' },
-  { href: '/services', label: 'Services' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/reviews', label: 'Reviews' },
+  { href: '/about/', label: 'About Us' },
+  { href: '/services/', label: 'Services' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/reviews/', label: 'Reviews' },
 ];
 const moreLinks = [
-  { href: '/blog', label: 'Blog' },
-  { href: '/process', label: 'Our Process' },
-  { href: '/pricing', label: 'Pricing' },
-  { href: '/book', label: 'Book a Free Call' },
-  { href: '/clients', label: 'Clients' },
-  { href: '/careers', label: 'Careers' },
-  { href: '/search', label: 'Search' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/process/', label: 'Our Process' },
+  { href: '/pricing/', label: 'Pricing' },
+  { href: '/book/', label: 'Book a Free Call' },
+  { href: '/clients/', label: 'Clients' },
+  { href: '/careers/', label: 'Careers' },
+  { href: '/search/', label: 'Search' },
 ];
 const current = Astro.url.pathname;
 ---
@@ -25,7 +25,7 @@ const current = Astro.url.pathname;
     </a>
     <ul class="hidden items-center gap-8 text-sm font-medium text-white/85 md:flex">
       {links.map((l) => (
-        <li><a href={l.href} data-nav-for={l.href === '/services' ? 'services' : l.href === '/reviews' ? 'reviews' : undefined} class:list={['transition hover:text-lime', { 'text-lime': current === l.href || current.startsWith(l.href + '/') }]}>{l.label}</a></li>
+        <li><a href={l.href} data-nav-for={l.href === '/services/' ? 'services' : l.href === '/reviews/' ? 'reviews' : undefined} class:list={['transition hover:text-lime', { 'text-lime': current === l.href || current.startsWith(l.href) }]}>{l.label}</a></li>
       ))}
       <li class="group relative">
         <button type="button" aria-haspopup="true" aria-expanded="false" class="flex items-center gap-1 transition hover:text-lime">More <span aria-hidden="true">▾</span></button>
@@ -36,7 +36,7 @@ const current = Astro.url.pathname;
         </ul>
       </li>
     </ul>
-    <a href="/contact" data-magnetic class="hidden rounded-full bg-lime px-4 py-2 text-sm font-semibold text-ink transition hover:bg-white md:block">Start a Project</a>
+    <a href="/contact/" data-magnetic class="hidden rounded-full bg-lime px-4 py-2 text-sm font-semibold text-ink transition hover:bg-white md:block">Start a Project</a>
     <button id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" class="grid h-10 w-10 place-items-center rounded-full text-white hover:bg-white/10 md:hidden">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
     </button>
@@ -50,11 +50,11 @@ const current = Astro.url.pathname;
       </button>
     </div>
     <ul class="mt-14 space-y-2">
-      {[{ href: '/', label: 'Home' }, ...links, { href: '/team', label: 'Meet the Team' }, ...moreLinks, { href: '/contact', label: 'Contact Us' }, { href: '/faq', label: 'FAQ' }].map((l) => (
+      {[{ href: '/', label: 'Home' }, ...links, { href: '/team/', label: 'Meet the Team' }, ...moreLinks, { href: '/contact/', label: 'Contact Us' }, { href: '/faq/', label: 'FAQ' }].map((l) => (
         <li><a href={l.href} class="block rounded-2xl px-3 py-3 font-display text-3xl font-extrabold text-white transition hover:bg-white/5 hover:text-lime">{l.label}</a></li>
       ))}
     </ul>
-    <a href="/contact" class="mt-auto rounded-full bg-lime px-6 py-4 text-center font-semibold text-ink">Start Your Project</a>
+    <a href="/contact/" class="mt-auto rounded-full bg-lime px-6 py-4 text-center font-semibold text-ink">Start Your Project</a>
   </div>
 <script>
   const btn = document.getElementById('menu-btn');

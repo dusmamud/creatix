@@ -10,11 +10,11 @@ const fmt = (d: string) => new Date(d + 'T00:00:00').toLocaleDateString('en-IN',
         <h2 id="home-blog-heading" class="font-display text-3xl font-extrabold sm:text-4xl">Latest from the <span class="hl">blog</span></h2>
         <p class="mt-2 max-w-xl text-sm leading-relaxed text-white/60">Practical notes on design, speed and branding — no fluff, no jargon.</p>
       </div>
-      <a href="/blog" class="rounded-full border border-line px-4 py-2 text-sm font-semibold transition hover:border-lime hover:text-lime">All articles →</a>
+      <a href="/blog/" class="rounded-full border border-line px-4 py-2 text-sm font-semibold transition hover:border-lime hover:text-lime">All articles →</a>
     </div>
     <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {latest.map((p) => (
-        <a href={`/blog/${p.slug}`} class="reveal group overflow-hidden rounded-2xl bg-card">
+        <a href={`/blog/${p.slug}/`}` class="reveal group overflow-hidden rounded-2xl bg-card">
           <img src={p.img} alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full bg-card-2 object-cover transition duration-300 group-hover:scale-105" />
           <div class="p-5">
             <p class="text-xs font-bold uppercase tracking-wider text-lime">{p.category} · {fmt(p.date)} · {p.readingTime}</p>

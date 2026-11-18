@@ -21,10 +21,10 @@ const { showClients = true } = Astro.props;
         <p class="reveal text-xs font-bold uppercase tracking-widest text-white/50">Trusted by teams at</p>
         <div class="mt-4 flex flex-wrap items-center gap-x-8 gap-y-3">
           {clients.map((c) => (
-            <a href="/clients" class="reveal font-display text-xl font-black tracking-tight text-white/70 transition hover:text-lime">{c.name}</a>
+            <a href="/clients/" class="reveal font-display text-xl font-black tracking-tight text-white/70 transition hover:text-lime">{c.name}</a>
           ))}
         </div>
-        <a href="/clients" class="mt-4 inline-block text-sm font-semibold text-lime underline-offset-4 hover:underline">See all clients and results →</a>
+        <a href="/clients/" class="mt-4 inline-block text-sm font-semibold text-lime underline-offset-4 hover:underline">See all clients and results →</a>
       </div>
     )}
   </div>

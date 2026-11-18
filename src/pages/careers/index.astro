@@ -17,7 +17,7 @@ const lead = 'We stay small on purpose — so every hire works on real client la
       <h2 class="reveal font-display text-2xl font-extrabold">Open roles</h2>
       <div class="mt-6 grid gap-4 md:grid-cols-2">
         {jobs.map((j) => (
-          <a href={`/careers/${j.slug}`} class="reveal group rounded-2xl bg-card p-6 transition hover:border-lime/50">
+          <a href={`/careers/${j.slug}/`}` class="reveal group rounded-2xl bg-card p-6 transition hover:border-lime/50">
             <div class="flex items-start justify-between gap-3">
               <h3 class="font-display text-xl font-extrabold group-hover:text-lime">{j.title}</h3>
               <span class="shrink-0 rounded-full bg-lime px-3 py-1 text-[11px] font-black uppercase tracking-wider text-ink">{j.dept}</span>

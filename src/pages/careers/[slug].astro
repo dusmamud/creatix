@@ -50,9 +50,9 @@ const lead = `${job.intro}`;
         <div class="rounded-2xl bg-card p-6">
           <h2 class="font-display text-lg font-extrabold">Other open roles</h2>
           <ul class="mt-3 space-y-3">
-            {others.map((o) => (<li><a href={`/careers/${o.slug}`} class="text-sm font-semibold text-white/80 transition hover:text-lime">{o.title}</a><p class="text-xs text-white/45">{o.dept} · {o.salary}</p></li>))}
+            {others.map((o) => (<li><a href={`/careers/${o.slug}/`}` class="text-sm font-semibold text-white/80 transition hover:text-lime">{o.title}</a><p class="text-xs text-white/45">{o.dept} · {o.salary}</p></li>))}
           </ul>
-          <a href="/careers" class="mt-4 inline-block text-sm font-semibold text-lime underline-offset-4 hover:underline">All roles →</a>
+          <a href="/careers/" class="mt-4 inline-block text-sm font-semibold text-lime underline-offset-4 hover:underline">All roles →</a>
         </div>
       </aside>
     </div>

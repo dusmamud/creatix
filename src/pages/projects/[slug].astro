@@ -68,15 +68,15 @@ const lead = `${project.title} — ${project.summary}`;
             <div class="flex justify-between gap-4"><dt class="text-white/55">Year</dt><dd class="font-semibold">{project.year}</dd></div>
             <div class="flex justify-between gap-4"><dt class="text-white/55">Category</dt><dd class="font-semibold">{project.category}</dd></div>
           </dl>
-          {service && <a href={`/services/${service.slug}`} class="mt-5 block rounded-full bg-lime px-5 py-3 text-center font-bold text-ink transition hover:bg-white">See {service.title} →</a>}
-          <a href="/contact" class="mt-3 block rounded-full border border-line px-5 py-3 text-center font-semibold transition hover:border-lime hover:text-lime">Start a similar project</a>
-          <a href={`/projects/${next.slug}`} class="mt-3 block rounded-full border border-line px-5 py-3 text-center font-semibold transition hover:border-lime hover:text-lime">Next project: {next.title.split(' — ')[0]} →</a>
+          {service && <a href={`/services/${service.slug}/`}` class="mt-5 block rounded-full bg-lime px-5 py-3 text-center font-bold text-ink transition hover:bg-white">See {service.title} →</a>}
+          <a href="/contact/" class="mt-3 block rounded-full border border-line px-5 py-3 text-center font-semibold transition hover:border-lime hover:text-lime">Start a similar project</a>
+          <a href={`/projects/${next.slug}/`}` class="mt-3 block rounded-full border border-line px-5 py-3 text-center font-semibold transition hover:border-lime hover:text-lime">Next project: {next.title.split(' — ')[0]} →</a>
         </aside>
       </div>
       <h2 class="reveal mt-14 font-display text-2xl font-extrabold">More projects</h2>
       <div class="mt-6 grid gap-4 sm:grid-cols-3">
         {others.map((p) => (
-          <a href={`/projects/${p.slug}`} class="reveal group overflow-hidden rounded-2xl bg-card">
+          <a href={`/projects/${p.slug}/`}` class="reveal group overflow-hidden rounded-2xl bg-card">
             <img src={p.img} alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full bg-card-2 object-cover transition group-hover:scale-105" />
             <div class="p-4"><h3 class="font-display font-extrabold group-hover:text-lime">{p.title}</h3><p class="text-xs text-white/55">{p.category} · {p.year}</p></div>
           </a>

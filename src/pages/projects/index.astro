@@ -25,7 +25,7 @@ const categories = [...new Set(projects.map((p) => p.category))];
     </div>
     <div class="mx-auto mt-6 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {projects.map((p) => (
-        <a href={`/projects/${p.slug}`} data-project-card data-category={p.category} class="reveal project-card group overflow-hidden rounded-2xl bg-card">
+        <a href={`/projects/${p.slug}/`}` data-project-card data-category={p.category} class="reveal project-card group overflow-hidden rounded-2xl bg-card">
           <img src={p.img} alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full bg-card-2 object-cover transition duration-300 group-hover:scale-105" />
           <div class="p-5">
             <p class="text-xs font-bold uppercase tracking-wider text-lime">{p.category} · {p.service} · {p.year}</p>
