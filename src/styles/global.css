@@ -108,9 +108,9 @@ footer :focus-visible { outline-color: #0b0b0b; }
 
 /* Image skeletons — no grey-placeholder flash: the reserved box shows a
    tone matching its surroundings until the image loads. */
-.bg-ink img, .bg-card img, .bg-card-2 img { background-color: #262626; }
-.bg-mist img { background-color: #dcdcd4; }
-.bg-lime img { background-color: rgba(163, 230, 53, 0.35); }
+.bg-ink img:not(.cutout), .bg-card img:not(.cutout), .bg-card-2 img:not(.cutout) { background-color: #262626; }
+.bg-mist img:not(.cutout) { background-color: #dcdcd4; }
+.bg-lime img:not(.cutout) { background-color: rgba(163, 230, 53, 0.35); }
 
 /* Testimonial slider: allow horizontal pointer drag, keep vertical scroll */
 #testi-viewport { touch-action: pan-y; cursor: grab; }
