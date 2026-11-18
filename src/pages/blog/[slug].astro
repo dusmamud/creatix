@@ -28,11 +28,14 @@ const lead = post.excerpt;
   <PageHero eyebrow={`${post.category} · ${post.readingTime}`} title={post.title} lead={lead} />
   <section class="bg-ink px-4 py-14 sm:px-6">
     <div class="mx-auto max-w-6xl">
-      <img src={post.img} alt={post.title} width="1200" height="800" class="reveal w-full rounded-2xl object-cover" />
+      <picture class="contents">
+        <source srcset={`${post.img.replace('.jpg', '-640.webp')} 640w, ${post.img.replace('.jpg', '.webp')} 1280w`} sizes="(max-width: 768px) 100vw, 1152px" type="image/webp" />
+        <img src={post.img} srcset={`${post.img.replace('.jpg', '-640.jpg')} 640w, ${post.img} 1280w`} sizes="(max-width: 768px) 100vw, 1152px" alt={post.title} width="1200" height="800" fetchpriority="high" class="reveal w-full rounded-2xl object-cover" />
+      </picture>
       <div class="mt-8 grid gap-10 lg:grid-cols-[1fr_300px]">
         <article class="reveal">
           <div class="flex items-center gap-3 border-b border-line pb-5">
-            {author && <img src={author.img} alt={`Portrait of ${author.name}`} width="96" height="96" loading="lazy" class="h-12 w-12 rounded-full object-cover" />}
+            {author && (<picture class="contents"><source srcset={author.img.replace('.jpg', '.webp')} type="image/webp" /><img src={author.img} alt={`Portrait of ${author.name}`} width="96" height="96" loading="lazy" class="h-12 w-12 rounded-full object-cover" /></picture>)}
             <div>
               <p class="font-display font-extrabold">{post.author}</p>
               <p class="text-sm text-white/55">{post.authorRole} · {post.date} · {post.readingTime} · {wordCount} words</p>

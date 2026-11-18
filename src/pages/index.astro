@@ -55,9 +55,9 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
         </div>
         <div data-hero data-parallax class="relative order-1 md:order-2">
           <div class="absolute left-1/2 top-6 -z-0 h-72 w-72 -translate-x-1/2 rounded-full bg-ink/5 sm:h-96 sm:w-96" aria-hidden="true"></div>
-          <picture>
+          <picture class="mx-auto block aspect-[2/3] h-[380px] sm:h-[480px]">
             <source srcset="/images/hero-woman.webp" type="image/webp" />
-            <img src="/images/hero-woman.png" alt="Smiling Creatix team member celebrating a successful project" width="512" height="768" fetchpriority="high" class="cutout relative z-10 mx-auto max-h-[380px] w-auto object-contain sm:max-h-[480px]" />
+            <img src="/images/hero-woman.png" alt="Smiling Creatix team member celebrating a successful project" width="512" height="768" fetchpriority="high" class="cutout relative z-10 mx-auto h-full w-auto object-contain" />
           </picture>
           <svg class="absolute -left-2 bottom-24 z-20 hidden h-16 w-16 -rotate-12 md:block" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M50 8c-14 4-22 14-24 28-1 8 2 14 8 18" stroke="#0b0b0b" stroke-width="2.5" stroke-linecap="round"/><path d="M34 52l-4 8 10-2" stroke="#0b0b0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
@@ -90,11 +90,17 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
       <div class="mt-8 grid gap-4 md:grid-cols-[1.6fr_1fr]">
         <figure class="reveal relative overflow-hidden rounded-2xl">
           <span class="absolute left-3 top-3 z-10" aria-hidden="true"><Starburst size={40} class="spin-slow" /></span>
-          <img src="/images/office-team.jpg" alt="The Creatix team working together in the studio" width="960" height="620" loading="lazy" data-parallax-img class="h-full min-h-[260px] w-full scale-[1.08] object-cover grayscale" />
+          <picture class="contents">
+            <source srcset="/images/office-team-800.webp 800w, /images/office-team.webp 1280w" sizes="(max-width: 768px) 100vw, 700px" type="image/webp" />
+            <img src="/images/office-team.jpg" srcset="/images/office-team-800.jpg 800w, /images/office-team.jpg 1280w" sizes="(max-width: 768px) 100vw, 700px" alt="The Creatix team working together in the studio" width="1280" height="853" loading="lazy" data-parallax-img class="h-full min-h-[260px] w-full scale-[1.08] object-cover grayscale" />
+          </picture>
           <figcaption class="absolute bottom-4 left-4 flex items-center gap-2 rounded-r-lg bg-lime px-4 py-3 font-display text-sm font-extrabold uppercase tracking-wide text-ink">A Creative Design<br />Agency <span class="ml-1 flex gap-0.5" aria-hidden="true"><span class="h-8 w-1 bg-ink/70"></span><span class="h-8 w-1 bg-ink/70"></span><span class="h-8 w-1 bg-ink/70"></span></span></figcaption>
         </figure>
         <figure class="reveal relative overflow-hidden rounded-2xl">
-          <img src="/images/thinking-woman.jpg" alt="A designer thinking through a new idea" width="640" height="760" loading="lazy" data-parallax-img class="h-full min-h-[260px] w-full scale-[1.08] object-cover grayscale" />
+          <picture class="contents">
+            <source srcset="/images/thinking-woman-640.webp 640w, /images/thinking-woman.webp 900w" sizes="(max-width: 768px) 100vw, 450px" type="image/webp" />
+            <img src="/images/thinking-woman.jpg" srcset="/images/thinking-woman-640.jpg 640w, /images/thinking-woman.jpg 900w" sizes="(max-width: 768px) 100vw, 450px" alt="A designer thinking through a new idea" width="900" height="1350" loading="lazy" data-parallax-img class="h-full min-h-[260px] w-full scale-[1.08] object-cover grayscale" />
+          </picture>
           <svg class="absolute right-4 top-4 h-12 w-12" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M24 6a10 10 0 0 0-6 18c1.5 1.2 2 2.6 2 4h8c0-1.4.5-2.8 2-4A10 10 0 0 0 24 6Z" stroke="#f472b6" stroke-width="2"/><path d="M20 36h8M21 41h6" stroke="#f472b6" stroke-width="2" stroke-linecap="round"/></svg>
         </figure>
       </div>
@@ -119,7 +125,10 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
           <article class="reveal rounded-2xl bg-mist p-5 text-ink transition hover:-translate-y-1">
             <div class="flex items-center gap-3">
               <span class="relative grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-full bg-lime ring-2 ring-lime/50">
-                <img src={m.img} alt={`Portrait of ${m.name}`} width="96" height="96" loading="lazy" class="h-full w-full bg-lime/40 object-cover" />
+                <picture class="contents">
+                  <source srcset={m.img.replace('.jpg', '.webp')} type="image/webp" />
+                  <img src={m.img} alt={`Portrait of ${m.name}`} width="96" height="96" loading="lazy" class="h-full w-full bg-lime/40 object-cover" />
+                </picture>
               </span>
               <div>
                 <h3 class="font-display text-base font-extrabold leading-tight">{m.name}</h3>
@@ -146,7 +155,10 @@ const tags = ['UX Design', 'App Design', 'Dashboard', 'Wireframe', 'User Researc
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.slice(0, 3).map((p) => (
           <a href={`/projects/${p.slug}/`}` class="reveal project-card group overflow-hidden rounded-2xl bg-card">
-            <img src={p.img} alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full bg-card-2 object-cover transition duration-300 group-hover:scale-105" />
+            <picture class="contents">
+              <source srcset={`${p.img.replace('.jpg', '-640.webp')} 640w, ${p.img.replace('.jpg', '.webp')} 1280w`} sizes="(max-width: 768px) 100vw, 400px" type="image/webp" />
+              <img src={p.img} srcset={`${p.img.replace('.jpg', '-640.jpg')} 640w, ${p.img} 1280w`} sizes="(max-width: 768px) 100vw, 400px" alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full bg-card-2 object-cover transition duration-300 group-hover:scale-105" />
+            </picture>
             <div class="p-5">
               <p class="text-xs font-bold uppercase tracking-wider text-lime">{p.category} · {p.year}</p>
               <h3 class="mt-1 font-display text-lg font-extrabold group-hover:text-lime">{p.title}</h3>

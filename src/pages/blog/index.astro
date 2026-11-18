@@ -24,7 +24,10 @@ const categories = [...new Set(blogPosts.map((p) => p.category))];
       <div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {blogPosts.map((p) => (
           <a href={`/blog/${p.slug}/`}` class="reveal group flex flex-col overflow-hidden rounded-2xl bg-card">
-            <img src={p.img} alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full bg-card-2 object-cover transition group-hover:scale-105" />
+            <picture class="contents">
+              <source srcset={`${p.img.replace('.jpg', '-640.webp')} 640w, ${p.img.replace('.jpg', '.webp')} 1280w`} sizes="(max-width: 768px) 100vw, 400px" type="image/webp" />
+              <img src={p.img} srcset={`${p.img.replace('.jpg', '-640.jpg')} 640w, ${p.img} 1280w`} sizes="(max-width: 768px) 100vw, 400px" alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full bg-card-2 object-cover transition group-hover:scale-105" />
+            </picture>
             <div class="flex flex-1 flex-col p-5">
               <p class="text-xs font-bold uppercase tracking-wider text-lime">{p.category} · {p.readingTime}</p>
               <h2 class="mt-2 font-display text-xl font-extrabold leading-tight group-hover:text-lime">{p.title}</h2>

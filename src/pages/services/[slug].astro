@@ -53,7 +53,10 @@ const lead = `${service.title} at Creatix — ${service.short} Starting ${servic
         <div class="mt-6 grid gap-4 sm:grid-cols-2">
           {related.map((p) => (
             <a href={`/projects/${p.slug}/`}` class="reveal group overflow-hidden rounded-2xl bg-card">
-              <img src={p.img} alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full object-cover transition group-hover:scale-105" />
+              <picture class="contents">
+                <source srcset={`${p.img.replace('.jpg', '-640.webp')} 640w, ${p.img.replace('.jpg', '.webp')} 1280w`} sizes="(max-width: 768px) 100vw, 400px" type="image/webp" />
+                <img src={p.img} srcset={`${p.img.replace('.jpg', '-640.jpg')} 640w, ${p.img} 1280w`} sizes="(max-width: 768px) 100vw, 400px" alt={p.title} width="640" height="420" loading="lazy" class="aspect-[3/2] w-full object-cover transition group-hover:scale-105" />
+              </picture>
               <div class="p-5"><h3 class="font-display text-lg font-extrabold group-hover:text-lime">{p.title}</h3><p class="mt-1 text-sm text-white/60">{p.summary}</p></div>
             </a>
           ))}

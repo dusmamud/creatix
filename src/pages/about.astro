@@ -17,7 +17,10 @@ const lead = 'Creatix is a creative design agency of designers, developers and s
         <p class="mt-4 leading-relaxed text-white/70">We stay small on purpose. You talk to the people doing the work, not an account manager relaying messages. That is why our clients stay — most of our work comes from repeat clients and referrals.</p>
       </div>
       <div class="reveal overflow-hidden rounded-2xl">
-        <img src="/images/office-team.jpg" alt="The Creatix team in the studio" width="960" height="620" loading="lazy" class="h-full w-full object-cover grayscale" />
+        <picture class="contents">
+          <source srcset="/images/office-team-800.webp 800w, /images/office-team.webp 1280w" sizes="(max-width: 768px) 100vw, 600px" type="image/webp" />
+          <img src="/images/office-team.jpg" srcset="/images/office-team-800.jpg 800w, /images/office-team.jpg 1280w" sizes="(max-width: 768px) 100vw, 600px" alt="The Creatix team in the studio" width="1280" height="853" loading="lazy" class="h-full w-full object-cover grayscale" />
+        </picture>
       </div>
     </div>
     <div class="mx-auto mt-12 grid max-w-6xl gap-4 sm:grid-cols-3">
